@@ -3127,7 +3127,6 @@ pre .javascript .function {
 @media screen and (max-width: 768px) {
   #banner {
     height: 200px;
-    background-image: url("https://picsum.photos/250/200/?random");
   }
   canvas {
     display: none;
@@ -3138,15 +3137,14 @@ pre .javascript .function {
 }
 @media screen and (min-width: 769px) {
   #banner {
+    filter: grayscale(90%);
     height: 230px;
-    background-image: url("https://picsum.photos/600/230/?random");
   }
   .item-title {
     width: 250px;
   }
 }
 #banner {
-  filter: grayscale(70%);
   width: 100%;
   display: flex;
   display: -webkit-flex;
