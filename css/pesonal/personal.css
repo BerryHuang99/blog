@@ -38,6 +38,7 @@
   word-wrap: break-word;
   word-break: normal;
   text-align: center;
+  z-index: 999;
 }
 .content-list {
   margin: 15px 15px;
