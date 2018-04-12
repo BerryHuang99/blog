@@ -3126,6 +3126,7 @@ pre .javascript .function {
 }
 @media screen and (max-width: 768px) {
   #banner {
+    filter: grayscale(70%);
     height: 200px;
   }
   canvas {
