@@ -42,7 +42,7 @@ var wisdomsS = [
     'Storms make trees take deeper roots.'
 ];
 
-window.onload = function() {
+$(document).ready(function() {
     let banner = document.getElementById('banner');
     if (banner) {
         let width = window.screen.width;
@@ -60,4 +60,4 @@ window.onload = function() {
             wisdom.innerHTML = wisdomsS[i - 1];
         }
     }
-}
+})
