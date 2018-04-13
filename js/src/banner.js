@@ -54,10 +54,12 @@ $(document).ready(function() {
         }
 
         let wisdom = document.getElementById('wisdom');
-        if (width > 768) {
-            wisdom.innerHTML = wisdomsL[i - 1];
-        } else {
-            wisdom.innerHTML = wisdomsS[i - 1];
+        if (wisdom) {
+            if (width > 768) {
+                wisdom.innerHTML = wisdomsL[i - 1];
+            } else {
+                wisdom.innerHTML = wisdomsS[i - 1];
+            }
         }
     }
 })
