@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="引用类型ECMAScript是面向对象的语言，但是并没用类的概念，因为没有类和接口。所以我们一般称之为引用类型。">
+<meta name="description" content="函数表达式JS中定义函数有两种方式，一种是函数声明，另外一种是函数表达式。函数声明存在函数声明提升的过程，函数表达式则无此过程。 匿名函数，也叫lamda函数。即function后没有标识符">
 <meta name="keywords" content="front-end,js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript高级程序设计笔记二">
-<meta property="og:url" content="http://huangyufeng.com/2017/11/05/JavaScript高级程序设计笔记二/index.html">
+<meta property="og:title" content="JavaScript高级程序设计笔记三">
+<meta property="og:url" content="http://huangyufeng.com/2017/11/06/JavaScript高级程序设计笔记三/index.html">
 <meta property="og:site_name" content="Berry&#39;s Home">
-<meta property="og:description" content="引用类型ECMAScript是面向对象的语言，但是并没用类的概念，因为没有类和接口。所以我们一般称之为引用类型。">
+<meta property="og:description" content="函数表达式JS中定义函数有两种方式，一种是函数声明，另外一种是函数表达式。函数声明存在函数声明提升的过程，函数表达式则无此过程。 匿名函数，也叫lamda函数。即function后没有标识符">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-04-14T10:35:06.469Z">
+<meta property="og:updated_time" content="2018-04-14T10:35:50.625Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript高级程序设计笔记二">
-<meta name="twitter:description" content="引用类型ECMAScript是面向对象的语言，但是并没用类的概念，因为没有类和接口。所以我们一般称之为引用类型。">
+<meta name="twitter:title" content="JavaScript高级程序设计笔记三">
+<meta name="twitter:description" content="函数表达式JS中定义函数有两种方式，一种是函数声明，另外一种是函数表达式。函数声明存在函数声明提升的过程，函数表达式则无此过程。 匿名函数，也叫lamda函数。即function后没有标识符">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://huangyufeng.com/2017/11/05/JavaScript高级程序设计笔记二/"/>
+  <link rel="canonical" href="http://huangyufeng.com/2017/11/06/JavaScript高级程序设计笔记三/"/>
 
 
 
 
 
-  <title>JavaScript高级程序设计笔记二 | Berry's Home</title>
+  <title>JavaScript高级程序设计笔记三 | Berry's Home</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://huangyufeng.com/2017/11/05/JavaScript高级程序设计笔记二/">
+    <link itemprop="mainEntityOfPage" href="http://huangyufeng.com/2017/11/06/JavaScript高级程序设计笔记三/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Berry Huang">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript高级程序设计笔记二</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript高级程序设计笔记三</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-05T00:00:00+08:00">
-                2017-11-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-06T00:00:00+08:00">
+                2017-11-06
               </time>
             
 
@@ -334,8 +334,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/05/JavaScript高级程序设计笔记二/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2017/11/05/JavaScript高级程序设计笔记二/" itemprop="commentsCount"></span>
+                <a href="/2017/11/06/JavaScript高级程序设计笔记三/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/11/06/JavaScript高级程序设计笔记三/" itemprop="commentsCount"></span>
                 </a>
               </span>
               <!--/noindex-->
@@ -344,7 +344,7 @@
 
           
           
-             <span id="/2017/11/05/JavaScript高级程序设计笔记二/" class="leancloud_visitors" data-flag-title="JavaScript高级程序设计笔记二">
+             <span id="/2017/11/06/JavaScript高级程序设计笔记三/" class="leancloud_visitors" data-flag-title="JavaScript高级程序设计笔记三">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -375,28 +375,14 @@
       
 
       
-        <h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>ECMAScript是面向对象的语言，但是并没用类的概念，因为没有类和接口。所以我们一般称之为引用类型。</p>
+        <h2 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h2><p>JS中定义函数有两种方式，一种是函数声明，另外一种是函数表达式。函数声明存在函数声明提升的过程，函数表达式则无此过程。</p>
+<p>匿名函数，也叫lamda函数。即function后没有标识符</p>
 <a id="more"></a>
-<p>以下是创建Array类型的几种方式：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"blue"</span>, <span class="string">"red"</span>, <span class="string">"green"</span>);</span><br><span class="line"><span class="keyword">var</span> colors = <span class="built_in">Array</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>];</span><br><span class="line"><span class="keyword">var</span> values = [<span class="number">1</span>, <span class="number">2</span>,]; <span class="comment">//这样会创建2或3项的数组（IE8或之前创建3个元素）</span></span><br></pre></td></tr></table></figure>
-<p>数组和对象使用字面量来定义时，不会调用构造函数</p>
-<p>数组对象如果超过了索引，它会自动增加长度</p>
-<p>数组中的length属性不是只读的，是可写的，可以通过修改length的值来移除末尾的项</p>
-<p>alert一个数组，会后台自动调用toString()方法，与其效果一致</p>
-<p>数组中null或undefined返回字符串时将以空字符串来表示</p>
-<p>数组中的栈方法使用<code>push()</code> <code>pop()</code> 队列方法使用<code>push()</code> <code>shift()</code> <code>unshift()</code>是在第一个位置插入一直数值并返回数组长度</p>
-<p>数组中<code>sort()</code>会调用每个数组项的<code>toString()</code>方法，然后再按照升序来排序</p>
-<p>可以利用如下方法来对数字数组进行排序</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">values.sort(<span class="function"><span class="keyword">function</span>(<span class="params">value1, value2</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> value1 - value2;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>concat()可以复制一个数组，还可以传入新的参数，放在元数组的末尾。<code>slice(1)</code>从位置1开始复制到末尾，<code>slice(1, 4)</code>，从1赋值到位置3结束。<br><code>splice(0,2, &quot;red&quot;, &quot;green&quot;);</code>  替换或者删除数组中的元素并返回一个被删除的元素的数组</p>
-<p>函数是对象，函数名是指针。定义函数的三种方式:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">val1,val2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val1+val2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">va1, val2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val1+val2;</span><br><span class="line">&#125;;   <span class="comment">//这里有个分号，跟定义变量一致</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//不推荐这样的用法，性能比较低，解析了两次代码</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"val1"</span>, <span class="string">"val2"</span>, <span class="string">"return val1+val2"</span>);</span><br></pre></td></tr></table></figure>
-<p>代码执行之前，解析器会执行 函数声明提升的过程，也就是说，函数的声明可以在调用之后。JS引擎会自动在执行前把声明提前。</p>
-<p>如果通过等价来声明函数表达式，并在之前调用。则会出现错误。</p>
-<p><code>arguments</code>对象有一个calee的属性，该属性是一个指针，指向拥有这个arguments对象的函数</p>
-<p>函数有两个属性，<em>length</em>和<em>prototype</em>。length表示函数希望接受到的参数个数</p>
-<p>call(作用域, 每一次参数 )  apply(作用域，参数数组)  <code>bind(作用域)</code> 这三个函数都可以改变函数中this所指代的作用域</p>
-<p>基本数据类型不是对象，但是会在后台执行基本包装类型的过程，这个与引用类型存在生存期的区别。</p>
+<p>以下的代码在ECMAScript中属于无效语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">say</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(“Hello”);</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">say</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(“No”);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>应该使用匿名函数的方式来写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> say;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(“Hello”);</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	alert(“No”);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JS中如果需要使用递归函数，那么应该使用arguments.callee来代替函数名，这样确保不会出现问题，最好不要直接填写自身函数名。</p>
 
       
     </div>
@@ -429,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/29/JavaScript高级程序设计笔记一/" rel="next" title="JavaScript高级程序设计笔记一">
-                <i class="fa fa-chevron-left"></i> JavaScript高级程序设计笔记一
+              <a href="/2017/11/05/JavaScript高级程序设计笔记二/" rel="next" title="JavaScript高级程序设计笔记二">
+                <i class="fa fa-chevron-left"></i> JavaScript高级程序设计笔记二
               </a>
             
           </div>
@@ -438,10 +424,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/06/JavaScript高级程序设计笔记三/" rel="prev" title="JavaScript高级程序设计笔记三">
-                JavaScript高级程序设计笔记三 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -602,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引用类型"><span class="nav-number">1.</span> <span class="nav-text">引用类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数表达式"><span class="nav-number">1.</span> <span class="nav-text">函数表达式</span></a></li></ol></div>
             
 
           </div>
@@ -787,7 +769,7 @@
 		_hcwp.push({widget:"Bloggerstream", widget_id: 103636, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
 		
-		_hcwp.push({widget:"Stream", widget_id: 103636, xid: "2017/11/05/JavaScript高级程序设计笔记二/"});
+		_hcwp.push({widget:"Stream", widget_id: 103636, xid: "2017/11/06/JavaScript高级程序设计笔记三/"});
 		
 
 		(function() {
