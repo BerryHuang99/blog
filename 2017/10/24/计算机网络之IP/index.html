@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Berry&#39;s Home">
 <meta property="og:description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;IP协议是TCP/IP协议簇中的核心协议，也是TCP/IP的载体。所有的TCP，UDP，ICMP及IGMP数据都以IP数据报格式传输。 特点&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;IP提供不可靠的，无连接的数据传送服务。 不可靠&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;不可靠指它不能保证IP数据报能成功到达目的地。IP仅提供最好的传输服">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-04-14T17:30:05.110Z">
+<meta property="og:updated_time" content="2018-04-16T13:49:34.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络之IP">
 <meta name="twitter:description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;IP协议是TCP/IP协议簇中的核心协议，也是TCP/IP的载体。所有的TCP，UDP，ICMP及IGMP数据都以IP数据报格式传输。 特点&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;IP提供不可靠的，无连接的数据传送服务。 不可靠&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;不可靠指它不能保证IP数据报能成功到达目的地。IP仅提供最好的传输服">
@@ -381,6 +381,7 @@
 <h3 id="无连接"><a href="#无连接" class="headerlink" title="无连接"></a>无连接</h3><p>&ensp;&ensp;&ensp;&ensp;无连接指IP并不维护任何关于后续数据报的状态信息。每个数据报的处理是相互独立的。IP数据报可以不按发送顺序接收。如果一信源向相同的信宿发送两个连续的数据报（先是A，然后是B）每个数据报都是独立的进行路由选择，可能选择不同的路线，因此B可能在A到达之前先到达。</p>
 <h2 id="IP路由"><a href="#IP路由" class="headerlink" title="IP路由"></a>IP路由</h2><h3 id="路由选择"><a href="#路由选择" class="headerlink" title="路由选择"></a>路由选择</h3><p>&ensp;&ensp;&ensp;&ensp;IP可以从TCP，UDP，ICMP，IGMP接收数据报并进行发送，或者从一个接口接收数据报并进行发送。IP层在内存中有一个路由表，当收到一份数据报并进行发送时，都要对该表进行搜索。当数据报来自某个接口时，IP首先检查目的IP地址是否为本机的IP地址或广播地址。如果是，数据报就被送到由IP首部协议字段所指定的协议模块进行处理。如果数据报的目的不是这些地址，那么：(1)如果IP层被设置成路由器的功能，那么就对数据报进行转发。(2)数据报被丢弃。</p>
 <p>###　路由表</p>
+<p>&ensp;&ensp;&ensp;&ensp;路由表是指路由器或者其他互联网网络设备上存储的一张路由信息表，该表中存有到达特定网络终端的路径，在某些情况下，还有一些与这些路径相关的度量。</p>
 <ul>
 <li>目的IP地址：<br>  可以是一个完整的主机地址，也可以是一个网络地址。</li>
 <li>下一跳地址：<br>  一个直接相连网络上的路由器。下一跳路由器不一定是最终目的地，但它可以把传送给它的数据报转发到目的。</li>
@@ -408,7 +409,7 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11111111 . 11111111 . 11111111 . 11111111 //地址：255.255.255.255</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h3><p>&ensp;&ensp;&ensp;&ensp;通俗地说，子网掩码是一种能判定某一IP地址所在子网（广播域），以及与自己在统一子网（广播域）内的其他主机IP地址范围记录方法。</p>
+<h3 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h3><p>&ensp;&ensp;&ensp;&ensp;通俗地说，子网掩码是一种能判定某一IP地址所在子网（广播域），以及与自己在同一子网（广播域）内的其他主机IP地址范围记录方法。</p>
 <ul>
 <li><p>表示方式：</p>
 <ol>

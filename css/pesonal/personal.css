@@ -1,6 +1,10 @@
 @media screen and (max-width: 768px) {
   #banner {
     filter: grayscale(70%);
+    -webkit-filter: grayscale(70%);
+    -moz-filter: grayscale(70%);
+    -ms-filter: grayscale(70%);
+    -o-filter: grayscale(70%);
     height: 200px;
   }
   canvas {
@@ -13,6 +17,10 @@
 @media screen and (min-width: 769px) {
   #banner {
     filter: grayscale(90%);
+    -webkit-filter: grayscale(90%);
+    -moz-filter: grayscale(90%);
+    -ms-filter: grayscale(90%);
+    -o-filter: grayscale(90%);
     height: 230px;
   }
   .item-title {
