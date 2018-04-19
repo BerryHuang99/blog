@@ -82,14 +82,14 @@
 <meta name="description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以。。。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存在的资源共享问题和">
 <meta name="keywords" content="basis,js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript基础">
+<meta property="og:title" content="JavaScript基础（一）">
 <meta property="og:url" content="http://huangyufeng.com/2017/10/25/JavaScript基础（一）/index.html">
 <meta property="og:site_name" content="Berry&#39;s Home">
 <meta property="og:description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以。。。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存在的资源共享问题和">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-04-19T14:47:14.330Z">
+<meta property="og:updated_time" content="2018-04-19T15:09:42.901Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript基础">
+<meta name="twitter:title" content="JavaScript基础（一）">
 <meta name="twitter:description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以。。。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存在的资源共享问题和">
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>JavaScript基础 | Berry's Home</title>
+  <title>JavaScript基础（一） | Berry's Home</title>
   
 
 
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript基础</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript基础（一）</h1>
         
 
         <div class="post-meta">
@@ -344,7 +344,7 @@
 
           
           
-             <span id="/2017/10/25/JavaScript基础（一）/" class="leancloud_visitors" data-flag-title="JavaScript基础">
+             <span id="/2017/10/25/JavaScript基础（一）/" class="leancloud_visitors" data-flag-title="JavaScript基础（一）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -455,8 +455,7 @@
 </li>
 <li><p>Object</p>
 <ul>
-<li>Object类型的作用类似于JS中大多数类型的顶级祖先，大多数类的实现都源于对Object的继承。<br>创建Object 实例的方式有两种：</li>
-</ul>
+<li><p>Object类型的作用类似于JS中大多数类型的顶级祖先，大多数类的实现都源于对Object的继承。<br>创建Object 实例的方式有两种：</p>
 <ol>
 <li><p>使用new 操作符后跟Object 构造函数：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person.name = <span class="string">'berry'</span>;</span><br></pre></td></tr></table></figure>
@@ -466,27 +465,31 @@
 </li>
 </ol>
 </li>
-</ul>
-<pre><code>- 获取对象属性的两种方法：
-1. 点操作符：
+<li><p>获取对象属性的两种方法：</p>
+<ol>
+<li><p>点操作符：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person.name <span class="comment">// berry</span></span><br></pre></td></tr></table></figure>
-
-2. 方括号语法(要访问的属性应以**字符串**的形式出现在方括号中)：
+</li>
+<li><p>方括号语法(要访问的属性应以<strong>字符串</strong>的形式出现在方括号中)：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person[<span class="string">'name'</span>]  <span class="comment">// berry</span></span><br></pre></td></tr></table></figure>
-
-- 转换字符串方法
-1. toLocaleString()
-以人们的使用习惯为标准转换，大多数时候与toString()输出结果没有区别，但在时间和数字（超过四位数时）会体现：
+</li>
+</ol>
+</li>
+<li><p>转换字符串方法:</p>
+<ol>
+<li><p>toLocaleString()<br>以人们的使用习惯为标准转换，大多数时候与toString()输出结果没有区别，但在时间和数字（超过四位数时）会体现：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1234</span>;</span><br><span class="line">a.toString(); <span class="comment">// 1234</span></span><br><span class="line">a.toLoacleString(); <span class="comment">// 1,123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">d.toString() <span class="comment">// "Wed Oct 25 2017 23:05:48 GMT+0800 (中国标准时间)"</span></span><br><span class="line">d.toLocaleString() <span class="comment">// "2017/10/25 下午11:05:48"</span></span><br></pre></td></tr></table></figure>
-
-2. toString()
-转换字符串，对于数组而言，转换结果中每个元素以逗号分隔。
-3. valueOf()
-与toString()类似。**但前者偏向显示，后者偏向运算**。
-&gt; 在进行对象转换时（例如:alert(a)）,将优先调用toString方法，如若没有重写toString将调用valueOf方法，如果两方法都不没有重写，但按Object的toString输出。
-&gt; 在进行强转字符串类型时将优先调用toString方法，强转为数字时优先调用valueOf。
-&gt; 在有运算操作符的情况下，valueOf的优先级高于toString。
-</code></pre><ul>
+</li>
+<li><p>toString()<br>转换字符串，对于数组而言，转换结果中每个元素以逗号分隔。</p>
+</li>
+<li>valueOf()<br>与toString()类似。<strong>但前者偏向显示，后者偏向运算</strong>。</li>
+</ol>
+<blockquote>
+<p>在进行对象转换时（例如:alert(a)）,将优先调用toString方法，如若没有重写toString将调用valueOf方法，如果两方法都不没有重写，但按Object的toString输出。<br>在进行强转字符串类型时将优先调用toString方法，强转为数字时优先调用valueOf。<br>在有运算操作符的情况下，valueOf的优先级高于toString。</p>
+</blockquote>
+</li>
+</ul>
+</li>
 <li><p>Array</p>
 <ul>
 <li><p>Array类型的创建方式</p>
@@ -504,29 +507,34 @@
 <li><p>归并方法</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reduce(calback) <span class="comment">// 从第一项开始，第一个参数为之前callback的运算结果，第二个参数为当前项</span></span><br><span class="line">reduceRight(callback)   <span class="comment">// 反向归并</span></span><br></pre></td></tr></table></figure>
 </li>
-</ul>
+<li><p>删除元素</p>
 </li>
 </ul>
-<pre><code>- 删除元素
-1. 使用splice方法；
-2. `(length - a)`，删除a个元素。
-</code></pre><ul>
-<li>基本包装类型<br>基本类型可以直接调用它们对应包装类的方法，但这并不等于基本类型和包装类型是一样的。基本类型调用包装类型的方法其实是将基本类型先转换成包装类型，调用方法结束后立即销毁生成的包装类。</li>
-</ul>
+<ol>
+<li>使用splice方法；</li>
+<li><code>(length - a)</code>，删除a个元素。</li>
+</ol>
+</li>
+<li><p>基本包装类型<br>基本类型可以直接调用它们对应包装类的方法，但这并不等于基本类型和包装类型是一样的。基本类型调用包装类型的方法其实是将基本类型先转换成包装类型，调用方法结束后立即销毁生成的包装类。</p>
 <blockquote>
 <p>调用<code>typeof</code>时，包装类返回<code>&#39;object&#39;</code>；<br>使用<code>instanceof</code>时，基本类型返回<code>false</code>。</p>
 </blockquote>
-<pre><code>- Boolean
+<ul>
+<li><p>Boolean</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Boolean</span>(a); <span class="comment">// 把a转换成Boolean类型的对象</span></span><br></pre></td></tr></table></figure>
-
-- Number
+</li>
+<li><p>Number</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>.toFixed(a);  <span class="comment">// 保留a位小数</span></span><br><span class="line"><span class="built_in">Number</span>.toExponential(a);    <span class="comment">// 指数表示法，a表示保留小数位数</span></span><br><span class="line"><span class="built_in">Number</span>.toPrecision(a);    <span class="comment">// 保留a位数字，超出的部分用指数表示法</span></span><br></pre></td></tr></table></figure>
-
-&gt; ES6之前，parseInt()，parseFloat()这两个类型转换方法属于全局方法，绑定在window上。ES6之后，将这两个方法绑定在Number之上，更加合理。
-
-- String
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stringValue = <span class="string">"hello world"</span>;</span><br><span class="line">alert(stringValue.slice(<span class="number">3</span>)); <span class="comment">//"lo world"</span></span><br><span class="line">alert(stringValue.substring(<span class="number">3</span>)); <span class="comment">//"lo world"</span></span><br><span class="line">alert(stringValue.substr(<span class="number">3</span>)); <span class="comment">//"lo world"</span></span><br><span class="line">alert(stringValue.slice(<span class="number">3</span>, <span class="number">7</span>)); <span class="comment">//"lo w"</span></span><br><span class="line">alert(stringValue.substring(<span class="number">3</span>,<span class="number">7</span>)); <span class="comment">//"lo w"</span></span><br><span class="line">alert(stringValue.substr(<span class="number">3</span>, <span class="number">7</span>)); <span class="comment">//"lo worl"</span></span><br><span class="line"></span><br><span class="line">alert(stringValue.slice(<span class="number">-3</span>)); <span class="comment">//"rld"</span></span><br><span class="line">alert(stringValue.substring(<span class="number">-3</span>)); <span class="comment">//"hello world"</span></span><br><span class="line">alert(stringValue.substr(<span class="number">-3</span>)); <span class="comment">//"rld"</span></span><br><span class="line">alert(stringValue.slice(<span class="number">3</span>, <span class="number">-4</span>)); <span class="comment">//"lo w"</span></span><br><span class="line">alert(stringValue.substring(<span class="number">3</span>, <span class="number">-4</span>)); <span class="comment">//"hel"</span></span><br><span class="line">alert(stringValue.substr(<span class="number">3</span>, <span class="number">-4</span>)); <span class="comment">//""（空字符串）</span></span><br></pre></td></tr></table></figure>
-</code></pre><h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ul>
+<blockquote>
+<p>ES6之前，parseInt()，parseFloat()这两个类型转换方法属于全局方法，绑定在window上。ES6之后，将这两个方法绑定在Number之上，更加合理。</p>
+</blockquote>
+</li>
+<li>String<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stringValue = <span class="string">"hello world"</span>;</span><br><span class="line">alert(stringValue.slice(<span class="number">3</span>)); <span class="comment">//"lo world"</span></span><br><span class="line">alert(stringValue.substring(<span class="number">3</span>)); <span class="comment">//"lo world"</span></span><br><span class="line">alert(stringValue.substr(<span class="number">3</span>)); <span class="comment">//"lo world"</span></span><br><span class="line">alert(stringValue.slice(<span class="number">3</span>, <span class="number">7</span>)); <span class="comment">//"lo w"</span></span><br><span class="line">alert(stringValue.substring(<span class="number">3</span>,<span class="number">7</span>)); <span class="comment">//"lo w"</span></span><br><span class="line">alert(stringValue.substr(<span class="number">3</span>, <span class="number">7</span>)); <span class="comment">//"lo worl"</span></span><br><span class="line"></span><br><span class="line">alert(stringValue.slice(<span class="number">-3</span>)); <span class="comment">//"rld"</span></span><br><span class="line">alert(stringValue.substring(<span class="number">-3</span>)); <span class="comment">//"hello world"</span></span><br><span class="line">alert(stringValue.substr(<span class="number">-3</span>)); <span class="comment">//"rld"</span></span><br><span class="line">alert(stringValue.slice(<span class="number">3</span>, <span class="number">-4</span>)); <span class="comment">//"lo w"</span></span><br><span class="line">alert(stringValue.substring(<span class="number">3</span>, <span class="number">-4</span>)); <span class="comment">//"hel"</span></span><br><span class="line">alert(stringValue.substr(<span class="number">3</span>, <span class="number">-4</span>)); <span class="comment">//""（空字符串）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ul>
 <li>执行环境与作用域<br>执行环境定义了变量或函数有权访问的其他数据，决定了它们各自的行为。每个执行环境都有一个与之关联的变量对象，环境中定义的所有变量和函数都保存在这个对象中。</li>
 </ul>
 <p>JS中没有块级作用域：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;&#125;</span><br><span class="line">alert(i)    <span class="comment">// 10</span></span><br></pre></td></tr></table></figure></p>
@@ -535,9 +543,8 @@
 </blockquote>
 <ul>
 <li>作用域链<br>JS中的作用域呈树状结构层层加深，子级作用域可以访问父级作用域中的资源，但父级作用域却无法直接获取到子级中的资源。<blockquote>
-<p>window<br>|_var color<br>|_function changeColor()<br>   |_var color<br>   |_swapColor()</p>
-<pre><code>|_......
-</code></pre></blockquote>
+<p>window<br>|_var color<br>|_function changeColor()<br>&ensp;&ensp;|_var color<br>&ensp;&ensp;|_swapColor()<br>&ensp;&ensp;&ensp;&ensp;|_x</p>
+</blockquote>
 </li>
 </ul>
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h3><ol>
