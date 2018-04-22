@@ -89,7 +89,7 @@
 <meta property="og:locale" content="mul">
 <meta property="og:image" content="http://huangyufeng.com/2017/10/23/计算机网络之HTTP/request.png">
 <meta property="og:image" content="http://huangyufeng.com/2017/10/23/计算机网络之HTTP/http.jpg">
-<meta property="og:updated_time" content="2018-04-14T13:22:06.041Z">
+<meta property="og:updated_time" content="2018-04-22T06:21:43.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络之HTTP">
 <meta name="twitter:description" content="主要特征简单快速&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。 灵活&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type">
@@ -397,10 +397,10 @@
 <li><p>结构：</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protocol :// hostname[:port] / path / [;parameters][?query]#fragment //其中[]内为可选项</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>相对定位：</p>
+<li><p>绝对定位：</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">protocol :// hostname[:port] / path / [;parameters][?query]#fragment //完整的根结构</span><br><span class="line">/path / [;parameters][?query]#fragment //以&apos;/&apos;开头表示根结点</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>绝对定位：</p>
+<li><p>相对定位：</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./ path / [;parameters][?query]#fragment //&apos;./&apos;表示当所在位置，可省略</span><br><span class="line">../path / [;parameters][?query]#fragment //&apos;../&apos;表示上级目录</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -436,7 +436,7 @@
 <li>HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。（值得一提的是，443端口被谷歌用来作为它们制定的新协议QUIC，而不是基于TCP。这一协议同样服务于HTTPS。）</li>
 <li>HTTP的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比HTTP协议安全。</li>
 </ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/ranyonsue/p/5984001.html" target="_blank" rel="noopener">《关于HTTP协议，一篇就够了》</a><br><a href="https://www.zhihu.com/question/34074946" target="_blank" rel="noopener">《HTTP/2.0 相比1.0有哪些重大改进？》</a><br><a href="https://www.cnblogs.com/gotodsp/p/6366163.html" target="_blank" rel="noopener">HTTP1.0 HTTP 1.1 HTTP 2.0主要区别</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/ranyonsue/p/5984001.html" target="_blank" rel="noopener">《关于HTTP协议，一篇就够了》</a><br><a href="https://www.zhihu.com/question/34074946" target="_blank" rel="noopener">《HTTP/2.0 相比1.0有哪些重大改进？》</a><br><a href="https://www.cnblogs.com/gotodsp/p/6366163.html" target="_blank" rel="noopener">《HTTP1.0 HTTP 1.1 HTTP 2.0主要区别》</a></p>
 
       
     </div>
@@ -565,7 +565,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
