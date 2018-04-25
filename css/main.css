@@ -3126,11 +3126,11 @@ pre .javascript .function {
 }
 @media screen and (max-width: 768px) {
   #banner {
-    filter: grayscale(70%);
-    -webkit-filter: grayscale(70%);
-    -moz-filter: grayscale(70%);
-    -ms-filter: grayscale(70%);
-    -o-filter: grayscale(70%);
+    filter: grayscale(80%);
+    -webkit-filter: grayscale(80%);
+    -moz-filter: grayscale(80%);
+    -ms-filter: grayscale(80%);
+    -o-filter: grayscale(80%);
     height: 200px;
   }
   canvas {
@@ -3138,6 +3138,11 @@ pre .javascript .function {
   }
   .item-title {
     width: 130px;
+  }
+  .site-meta {
+    background-image: url("/images/color-2.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
 }
 @media screen and (min-width: 769px) {
@@ -3151,6 +3156,11 @@ pre .javascript .function {
   }
   .item-title {
     width: 250px;
+  }
+  .site-meta {
+    background-image: url("/images/color.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
 }
 #banner {
@@ -3174,8 +3184,8 @@ pre .javascript .function {
   z-index: 999;
 }
 .content-list {
-  margin: 15px 15px;
-  min-height: 400px;
+  margin: 15px 15px 0;
+  min-height: 380px;
   overflow: hidden;
 }
 .list-item a {
