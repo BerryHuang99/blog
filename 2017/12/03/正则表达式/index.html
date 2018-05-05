@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="a personal blog and record of berry">
+<meta name="description" content="正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。正则表达式通常被用来检索、替换那些符合某个模式(规则)的文本。 字符原义文本字符代表原始字符含义（字母、数字、部分符号），如abc、123等。 元字符具有特殊含义的非字母字符：    字符 含义     \ 将下一个字符标记为一个特殊字符、或一个原义字符、或一">
 <meta name="keywords" content="js,basis,RegExp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则表达式">
 <meta property="og:url" content="http://huangyufeng.com/2017/12/03/正则表达式/index.html">
 <meta property="og:site_name" content="Berry&#39;s Home">
-<meta property="og:description" content="a personal blog and record of berry">
+<meta property="og:description" content="正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。正则表达式通常被用来检索、替换那些符合某个模式(规则)的文本。 字符原义文本字符代表原始字符含义（字母、数字、部分符号），如abc、123等。 元字符具有特殊含义的非字母字符：    字符 含义     \ 将下一个字符标记为一个特殊字符、或一个原义字符、或一">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-04-29T10:29:20.535Z">
+<meta property="og:updated_time" content="2018-05-02T13:16:02.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
-<meta name="twitter:description" content="a personal blog and record of berry">
+<meta name="twitter:description" content="正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。正则表达式通常被用来检索、替换那些符合某个模式(规则)的文本。 字符原义文本字符代表原始字符含义（字母、数字、部分符号），如abc、123等。 元字符具有特殊含义的非字母字符：    字符 含义     \ 将下一个字符标记为一个特殊字符、或一个原义字符、或一">
 
 
 
@@ -103,7 +103,7 @@
     sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -161,7 +161,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Welcome to Berry's Website</p>
+        <h1 class="site-subtitle" itemprop="description">Welcome to Berry's Website</h1>
       
   </div>
 
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">正则表达式</h1>
+          <h2 class="post-title" itemprop="name headline">正则表达式</h2>
         
 
         <div class="post-meta">
@@ -375,7 +375,186 @@
       
 
       
-        
+        <p><strong>正则表达式</strong>(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。正则表达式通常被用来检索、替换那些符合某个模式(规则)的文本。</p>
+<h2 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h2><h3 id="原义文本字符"><a href="#原义文本字符" class="headerlink" title="原义文本字符"></a>原义文本字符</h3><p>代表原始字符含义（字母、数字、部分符号），如<code>abc</code>、<code>123</code>等。</p>
+<h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><p>具有特殊含义的非字母字符：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:left">将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:left">匹配输入字符串的开始位置。在[]中表示取反。</td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td style="text-align:left">匹配输入字符串的结束位置。</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:left">匹配前面的子表达式零次或多次。</td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:left">匹配前面的子表达式一次或多次。</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:left">匹配前面的子表达式零次或一次。</td>
+</tr>
+<tr>
+<td style="text-align:center">{n}</td>
+<td style="text-align:left">n 是一个非负整数。匹配确定的 n 次。</td>
+</tr>
+<tr>
+<td style="text-align:center">{n,}</td>
+<td style="text-align:left">n 是一个非负整数。至少匹配n 次。</td>
+</tr>
+<tr>
+<td style="text-align:center">{n,m}</td>
+<td style="text-align:left">m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。<strong>注意在逗号和两个数之间不能有空格。</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:left">当该字符紧跟在任何一个其他限制符 (*, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。</td>
+</tr>
+<tr>
+<td style="text-align:center">.</td>
+<td style="text-align:left">匹配除换行符（\n、\r）之外的任何单个字符。</td>
+</tr>
+<tr>
+<td style="text-align:center">(pattern)</td>
+<td style="text-align:left">匹配 pattern 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，在VBScript 中使用 SubMatches 集合，在JScript 中则使用 $0…$9 属性。要匹配圆括号字符，请使用 ‘(‘ 或 ‘)‘。</td>
+</tr>
+<tr>
+<td style="text-align:center">(?:pattern)</td>
+<td style="text-align:left">匹配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 “或” 字符 (&brvbar;) 来组合一个模式的各个部分是很有用。</td>
+</tr>
+<tr>
+<td style="text-align:center">(?=pattern)</td>
+<td style="text-align:left">正向肯定预查（look ahead positive assert），在任何匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。</td>
+</tr>
+<tr>
+<td style="text-align:center">(?!pattern)</td>
+<td style="text-align:left">正向否定预查(negative assert)，在任何不匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。</td>
+</tr>
+<tr>
+<td style="text-align:center">(?&lt;=pattern)</td>
+<td style="text-align:left">反向(look behind)肯定预查，与正向肯定预查类似，只是方向相反。<strong>js中不支持</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">(?&lt;!pattern)</td>
+<td style="text-align:left">反向否定预查，与正向否定预查类似，只是方向相反。<strong>js中不支持</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">x&brvbar;y</td>
+<td style="text-align:left">匹配 x 或 y。</td>
+</tr>
+<tr>
+<td style="text-align:center">[xyz]</td>
+<td style="text-align:left">字符集合。匹配所包含的任意一个字符。</td>
+</tr>
+<tr>
+<td style="text-align:center">[^xyz]</td>
+<td style="text-align:left">负值字符集合。匹配未包含的任意字符。</td>
+</tr>
+<tr>
+<td style="text-align:center">[a-z]</td>
+<td style="text-align:left">字符范围。匹配指定范围内的任意字符。</td>
+</tr>
+<tr>
+<td style="text-align:center">[^a-z]</td>
+<td style="text-align:left">负值字符范围。匹配任何不在指定范围内的任意字符。</td>
+</tr>
+<tr>
+<td style="text-align:center">\b</td>
+<td style="text-align:left">匹配一个单词边界，也就是指单词和空格间的位置。</td>
+</tr>
+<tr>
+<td style="text-align:center">\B</td>
+<td style="text-align:left">匹配非单词边界。</td>
+</tr>
+<tr>
+<td style="text-align:center">\cx</td>
+<td style="text-align:left">匹配由 x 指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
+</tr>
+<tr>
+<td style="text-align:center">\d</td>
+<td style="text-align:left">匹配一个数字字符。等价于 [0-9]。</td>
+</tr>
+<tr>
+<td style="text-align:center">\D</td>
+<td style="text-align:left">匹配一个非数字字符。等价于 [^0-9]。</td>
+</tr>
+<tr>
+<td style="text-align:center">\f</td>
+<td style="text-align:left">匹配一个换页符。等价于 \x0c 和 \cL。</td>
+</tr>
+<tr>
+<td style="text-align:center">\n</td>
+<td style="text-align:left">匹配一个换行符。等价于 \x0a 和 \cJ。</td>
+</tr>
+<tr>
+<td style="text-align:center">\r</td>
+<td style="text-align:left">匹配一个回车符。等价于 \x0d 和 \cM。</td>
+</tr>
+<tr>
+<td style="text-align:center">\s</td>
+<td style="text-align:left">匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td style="text-align:center">\S</td>
+<td style="text-align:left">匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td style="text-align:center">\t</td>
+<td style="text-align:left">匹配一个制表符。等价于 \x09 和 \cI。</td>
+</tr>
+<tr>
+<td style="text-align:center">\v</td>
+<td style="text-align:left">匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
+</tr>
+<tr>
+<td style="text-align:center">\w</td>
+<td style="text-align:left">匹配字母、数字、下划线。等价于’[A-Za-z0-9_]’。</td>
+</tr>
+<tr>
+<td style="text-align:center">\W</td>
+<td style="text-align:left">匹配非字母、数字、下划线。等价于 ‘[^A-Za-z0-9_]’。</td>
+</tr>
+<tr>
+<td style="text-align:center">\un</td>
+<td style="text-align:left">匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="使用规则"><a href="#使用规则" class="headerlink" title="使用规则"></a>使用规则</h3><ol>
+<li>表达式内不可有空格；</li>
+<li>用量词（{n,m}, +等）修饰整体时，需用<code>()</code>包裹分组；</li>
+<li><p>反向引用：对于每个<code>()</code>内的分组，在使用时可以通过<code>$</code>+顺序号表示，以便更改次序使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'2017-12-01'</span>.replace(<span class="regexp">/(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)/g</span>, <span class="string">'$3\/$2\/$1'</span>);</span><br><span class="line"><span class="comment">// "01/12/2017"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于多行字符串匹配使用<code>^</code>与<code>$</code>表示开头结尾时，在表达式结束后标注m以表示每行作为新的匹配开始。</p>
+</li>
+</ol>
+<h2 id="JavaScript使用"><a href="#JavaScript使用" class="headerlink" title="JavaScript使用"></a>JavaScript使用</h2><h3 id="String-replace-regExp-arr"><a href="#String-replace-regExp-arr" class="headerlink" title="String.replace(regExp, arr)"></a>String.replace(regExp, arr)</h3><p>用于替换匹配好的字符串。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'ThIS is my blog which is based on hexo.'</span>.replace(<span class="regexp">/\Bis\b/gi</span>, <span class="string">'at'</span>);</span><br><span class="line"><span class="comment">// 'That is my blog which is based on hexo.'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="String-search-regExp"><a href="#String-search-regExp" class="headerlink" title="String.search(regExp)"></a>String.search(regExp)</h3><p>查找匹配表达式的子串出现的位置标号。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'BERRY HUANG'</span>.search(<span class="regexp">/huang/gi</span>); <span class="comment">// 6</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="String-match-regExp"><a href="#String-match-regExp" class="headerlink" title="String.match(regExp)"></a>String.match(regExp)</h3><p>选出匹配规则的字符串组成一个数组集合。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'123abc456def789'</span>.match(<span class="regexp">/\d+/g</span>);</span><br><span class="line"><span class="comment">// ["123", "456", "789"]</span></span><br><span class="line"><span class="string">'123456789'</span>.match(<span class="regexp">/\d&#123;3,6&#125;?/g</span>);</span><br><span class="line"><span class="comment">// ["123", "456", "789"] 非贪婪</span></span><br><span class="line"><span class="string">'123456789'</span>.match(<span class="regexp">/\d&#123;3,6&#125;/g</span>);</span><br><span class="line"><span class="comment">// ["123456", "789"] 贪婪</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="RegExp-test-string"><a href="#RegExp-test-string" class="headerlink" title="RegExp.test(string)"></a>RegExp.test(string)</h3><p>用于测试字符串是否匹配正则模式。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r = <span class="regexp">/^([a-zA-Z0-9-_/])+@([a-zA-Z0-9-_])+((\.[a-zA-Z]+)+)$/</span>;</span><br><span class="line">r.test(<span class="string">'berryhuang99@gmail.com'</span>); <span class="comment">// true</span></span><br><span class="line">r.test(<span class="string">'berryhuang99@gmail.vip.com'</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注，每次test之后，原正则表达式的匹配起始点将向后移动到下一个匹配点（<code>r.lastIndex</code>）。因此，当多次重复调用test时，结果未必都相同。</p>
+</blockquote>
+<h3 id="RegExp-exec-string"><a href="#RegExp-exec-string" class="headerlink" title="RegExp.exec(string)"></a>RegExp.exec(string)</h3><p>用于检索字符串中正则匹配的第一个子串，返回其信息对象（匹配位置，匹配对象等），然后移动匹配位置到子串之后（循环移动）。没有匹配则返回<code>null</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r = <span class="regexp">/\d+/g</span>;</span><br><span class="line">r.exec(<span class="string">'123abc456deg'</span>);</span><br><span class="line"><span class="comment">// ["123", index: 0, input: "123abc456deg", groups: undefined]</span></span><br><span class="line">r.exec(<span class="string">'123abc456deg'</span>);</span><br><span class="line"><span class="comment">// ["456", index: 6, input: "123abc456deg", groups: undefined]</span></span><br><span class="line">r.exec(<span class="string">'123abc456deg'</span>);</span><br><span class="line"><span class="comment">// null</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.runoob.com" target="_blank" rel="noopener">www.runoob.com</a></p>
+
       
     </div>
     
@@ -478,8 +657,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -563,6 +751,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符"><span class="nav-number">1.</span> <span class="nav-text">字符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原义文本字符"><span class="nav-number">1.1.</span> <span class="nav-text">原义文本字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符"><span class="nav-number">1.2.</span> <span class="nav-text">元字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用规则"><span class="nav-number">1.3.</span> <span class="nav-text">使用规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript使用"><span class="nav-number">2.</span> <span class="nav-text">JavaScript使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String-replace-regExp-arr"><span class="nav-number">2.1.</span> <span class="nav-text">String.replace(regExp, arr)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-search-regExp"><span class="nav-number">2.2.</span> <span class="nav-text">String.search(regExp)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-match-regExp"><span class="nav-number">2.3.</span> <span class="nav-text">String.match(regExp)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp-test-string"><span class="nav-number">2.4.</span> <span class="nav-text">RegExp.test(string)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp-exec-string"><span class="nav-number">2.5.</span> <span class="nav-text">RegExp.exec(string)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

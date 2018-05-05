@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="a personal blog and record of berry">
+<meta name="description" content="XSSCSRF">
 <meta name="keywords" content="security">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端安全">
 <meta property="og:url" content="http://huangyufeng.com/2018/02/14/前端安全/index.html">
 <meta property="og:site_name" content="Berry&#39;s Home">
-<meta property="og:description" content="a personal blog and record of berry">
+<meta property="og:description" content="XSSCSRF">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-04-29T08:09:26.922Z">
+<meta property="og:updated_time" content="2018-05-05T15:39:03.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端安全">
-<meta name="twitter:description" content="a personal blog and record of berry">
+<meta name="twitter:description" content="XSSCSRF">
 
 
 
@@ -103,7 +103,7 @@
     sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -161,7 +161,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Welcome to Berry's Website</p>
+        <h1 class="site-subtitle" itemprop="description">Welcome to Berry's Website</h1>
       
   </div>
 
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">前端安全</h1>
+          <h2 class="post-title" itemprop="name headline">前端安全</h2>
         
 
         <div class="post-meta">
@@ -375,7 +375,7 @@
       
 
       
-        
+        <h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2>
       
     </div>
     
@@ -474,8 +474,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -559,6 +568,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS"><span class="nav-number">1.</span> <span class="nav-text">XSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF"><span class="nav-number">2.</span> <span class="nav-text">CSRF</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

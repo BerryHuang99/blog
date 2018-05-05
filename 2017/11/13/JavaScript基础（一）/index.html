@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="Berry&#39;s Home">
 <meta property="og:description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以。。。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存在的资源共享问题和">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-04-29T07:12:54.140Z">
+<meta property="og:image" content="http://huangyufeng.com/2017/11/13/JavaScript基础（一）/storage.png">
+<meta property="og:updated_time" content="2018-05-02T07:10:49.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript基础（一）">
 <meta name="twitter:description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以。。。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存在的资源共享问题和">
+<meta name="twitter:image" content="http://huangyufeng.com/2017/11/13/JavaScript基础（一）/storage.png">
 
 
 
@@ -103,7 +105,7 @@
     sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -161,7 +163,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Welcome to Berry's Website</p>
+        <h1 class="site-subtitle" itemprop="description">Welcome to Berry's Website</h1>
       
   </div>
 
@@ -280,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript基础（一）</h1>
+          <h2 class="post-title" itemprop="name headline">JavaScript基础（一）</h2>
         
 
         <div class="post-meta">
@@ -390,6 +392,10 @@
 </ul>
 <p>可以用<code>typeof</code>操作符得到除Null之外的其他变量的具体类型，得到的值是小写类型名，而Null类型则和引用类型一样返回<code>object</code>(null表示空指针对象)。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="string">'abc'</span>    <span class="comment">// 'string'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">1</span>    <span class="comment">// 'number'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span> <span class="comment">// 'boolean'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span>    <span class="comment">// 'undefined'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> <span class="comment">// 'object'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>基本类型</strong>在内存中分别占有固定大小的空间，他们的值保存在<strong>栈</strong>空间，通过按值来访问。<br><strong>引用类型</strong>值大小不固定，<strong>栈内存</strong>中存放地址指向<strong>堆内存</strong>中的对象。</p>
+</blockquote>
+<p><img src="/2017/11/13/JavaScript基础（一）/storage.png" alt="storage"></p>
 <h3 id="比较操作符"><a href="#比较操作符" class="headerlink" title="比较操作符"></a>比较操作符</h3><p>Javascript提供了两种比较操作符：<code>==</code>和<code>===</code>。</p>
 <ul>
 <li><code>==</code>提供了一套隐式转换机制<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> == <span class="string">'1'</span> <span class="comment">// true</span></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">null</span> <span class="comment">// true</span></span><br><span class="line"><span class="number">0</span> == <span class="literal">false</span> <span class="comment">// true </span></span><br><span class="line"><span class="number">1</span> == <span class="literal">true</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>

@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="a personal blog and record of berry">
+<meta name="description" content="在以往的项目中，为了防止频繁触发事件请求，我通常只是给事件函数上一把“锁”（Boolean值），或者修改&amp;lt;input&amp;gt;的disable属性，当事件执行完成后再“解锁”。然而，面对一些异常情况，如ajax长时间得不到浏览器响应，导致无法“解锁”，事件被永远封印。函数节流（throttle）与去抖（debounce）避免了这种情况发生。 简介对于resize,scroll,keydown,">
 <meta name="keywords" content="advanced,js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="函数节流与去抖">
 <meta property="og:url" content="http://huangyufeng.com/2018/02/03/函数节流与去抖/index.html">
 <meta property="og:site_name" content="Berry&#39;s Home">
-<meta property="og:description" content="a personal blog and record of berry">
+<meta property="og:description" content="在以往的项目中，为了防止频繁触发事件请求，我通常只是给事件函数上一把“锁”（Boolean值），或者修改&amp;lt;input&amp;gt;的disable属性，当事件执行完成后再“解锁”。然而，面对一些异常情况，如ajax长时间得不到浏览器响应，导致无法“解锁”，事件被永远封印。函数节流（throttle）与去抖（debounce）避免了这种情况发生。 简介对于resize,scroll,keydown,">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-04-29T07:48:37.877Z">
+<meta property="og:updated_time" content="2018-05-05T15:29:12.240Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数节流与去抖">
-<meta name="twitter:description" content="a personal blog and record of berry">
+<meta name="twitter:description" content="在以往的项目中，为了防止频繁触发事件请求，我通常只是给事件函数上一把“锁”（Boolean值），或者修改&amp;lt;input&amp;gt;的disable属性，当事件执行完成后再“解锁”。然而，面对一些异常情况，如ajax长时间得不到浏览器响应，导致无法“解锁”，事件被永远封印。函数节流（throttle）与去抖（debounce）避免了这种情况发生。 简介对于resize,scroll,keydown,">
 
 
 
@@ -103,7 +103,7 @@
     sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -161,7 +161,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Welcome to Berry's Website</p>
+        <h1 class="site-subtitle" itemprop="description">Welcome to Berry's Website</h1>
       
   </div>
 
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">函数节流与去抖</h1>
+          <h2 class="post-title" itemprop="name headline">函数节流与去抖</h2>
         
 
         <div class="post-meta">
@@ -375,7 +375,15 @@
       
 
       
-        
+        <p>在以往的项目中，为了防止频繁触发事件请求，我通常只是给事件函数上一把“锁”（Boolean值），或者修改<code>&lt;input&gt;</code>的<code>disable</code>属性，当事件执行完成后再“解锁”。然而，面对一些异常情况，如ajax长时间得不到浏览器响应，导致无法“解锁”，事件被永远封印。函数节流（throttle）与去抖（debounce）避免了这种情况发生。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>对于<code>resize</code>,<code>scroll</code>,<code>keydown</code>,<code>keyup</code>,<code>keypress</code>,<code>mousemove</code>等事件十分容易被用户连续多次触发，导致事件绑定的回调函数短时间内不断被重复执行（其中大部分是不必要甚至恶性的），既增加了浏览器的负担，也影响了用户体验效果。函数节流（throttle）与去抖（debounce）的出现对此进行了良好的优化，减少同一事件短时间内的重复触发。</p>
+<h2 id="throttle"><a href="#throttle" class="headerlink" title="throttle"></a>throttle</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>当第一次触发事件后，先执行事件对应的回调函数，然后进入一段计时。在这段计时事件内再次触发的该事件将被忽略，直到计时结束后才能再次触发并进入新的计时。</p>
+<h3 id="简易实现"><a href="#简易实现" class="headerlink" title="简易实现"></a>简易实现</h3><p>通过闭包避免全局变量对全局环境造成污染。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">callback, time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!timer) &#123;</span><br><span class="line">            callback();</span><br><span class="line">            timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                clearTimeout(timer);</span><br><span class="line">                timer = <span class="literal">null</span>;</span><br><span class="line">            &#125;, time);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="debounce"><a href="#debounce" class="headerlink" title="debounce"></a>debounce</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>当触发事件后并不会立即执行事件，而是开始计时，计时结束之前如果事件再次被触发则抛弃之前的任务，重新开始计时，直到事件稳定不再被重复触发时，计时结束后执行事件绑定函数。</p>
+<h3 id="简易实现-1"><a href="#简易实现-1" class="headerlink" title="简易实现"></a>简易实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">callback, time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        clearTimeout(timer);</span><br><span class="line">        timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            callback();</span><br><span class="line">        &#125;, time);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>《JavaScript高级程序设计》<br><a href="https://blog.csdn.net/ligang2585116/article/details/75003436" target="_blank" rel="noopener">《debounce与throttle区别》</a></p>
+
       
     </div>
     
@@ -476,8 +484,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -561,6 +578,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#throttle"><span class="nav-number">2.</span> <span class="nav-text">throttle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简易实现"><span class="nav-number">2.2.</span> <span class="nav-text">简易实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debounce"><span class="nav-number">3.</span> <span class="nav-text">debounce</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-1"><span class="nav-number">3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简易实现-1"><span class="nav-number">3.2.</span> <span class="nav-text">简易实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
