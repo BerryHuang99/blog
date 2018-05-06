@@ -3057,10 +3057,11 @@ pre .javascript .function {
 }
 .post-body h3 {
   font-size: 1.3em;
-  border-bottom: 1px dotted #eee;
+  border-bottom: 1px solid #eee;
 }
 .post-body h4 {
   font-size: 1.2em;
+  border-bottom: 1px dotted #eee;
 }
 .post-body h5 {
   font-size: 1.07em;
@@ -3139,11 +3140,6 @@ pre .javascript .function {
   .item-title {
     width: 130px;
   }
-  .site-meta {
-    background-image: url("/images/color-2.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-  }
 }
 @media screen and (min-width: 769px) {
   #banner {
@@ -3157,11 +3153,6 @@ pre .javascript .function {
   .item-title {
     width: 250px;
   }
-  .site-meta {
-    background-image: url("/images/color.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-  }
 }
 #banner {
   width: 100%;
@@ -3172,6 +3163,7 @@ pre .javascript .function {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   box-shadow: 0 0 30px 30px #fff inset;
+  animation: inner-shadow 1s;
 }
 .quotes {
   color: #fff;
@@ -3206,4 +3198,36 @@ pre .javascript .function {
 }
 .clearfix {
   clear: both;
+}
+@-moz-keyframes inner-shadow {
+  0% {
+    box-shadow: 0 0 150px 150px #fff inset;
+  }
+  100% {
+    box-shadow: 0 0 30px 30px #fff inset;
+  }
+}
+@-webkit-keyframes inner-shadow {
+  0% {
+    box-shadow: 0 0 150px 150px #fff inset;
+  }
+  100% {
+    box-shadow: 0 0 30px 30px #fff inset;
+  }
+}
+@-o-keyframes inner-shadow {
+  0% {
+    box-shadow: 0 0 150px 150px #fff inset;
+  }
+  100% {
+    box-shadow: 0 0 30px 30px #fff inset;
+  }
+}
+@keyframes inner-shadow {
+  0% {
+    box-shadow: 0 0 150px 150px #fff inset;
+  }
+  100% {
+    box-shadow: 0 0 30px 30px #fff inset;
+  }
 }
