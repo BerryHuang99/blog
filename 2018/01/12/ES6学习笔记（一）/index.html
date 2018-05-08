@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="类型扩展SymbolSet与MapPromise遍历ClassModule">
+<meta name="description" content="类型扩展let与const声明let与const是ES6新增的变量声明方式，前者用于定义块级作用变量，后者用于定义块级作用域常量。  letlet声明弥补了ECMAScript没有块级作用域的缺憾。用let声明的变量仅在块级作用域内有效： 12for(let i = 0; i &amp;lt; 5; i++) &amp;#123;&amp;#125;console.log(i); // undefined  constc">
 <meta name="keywords" content="advanced,js,ECMAScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6学习笔记（一）">
 <meta property="og:url" content="http://huangyufeng.com/2018/01/12/ES6学习笔记（一）/index.html">
 <meta property="og:site_name" content="Berry&#39;s Home">
-<meta property="og:description" content="类型扩展SymbolSet与MapPromise遍历ClassModule">
+<meta property="og:description" content="类型扩展let与const声明let与const是ES6新增的变量声明方式，前者用于定义块级作用变量，后者用于定义块级作用域常量。  letlet声明弥补了ECMAScript没有块级作用域的缺憾。用let声明的变量仅在块级作用域内有效： 12for(let i = 0; i &amp;lt; 5; i++) &amp;#123;&amp;#125;console.log(i); // undefined  constc">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-04-29T06:50:09.291Z">
+<meta property="og:updated_time" content="2018-05-08T15:55:25.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记（一）">
-<meta name="twitter:description" content="类型扩展SymbolSet与MapPromise遍历ClassModule">
+<meta name="twitter:description" content="类型扩展let与const声明let与const是ES6新增的变量声明方式，前者用于定义块级作用变量，后者用于定义块级作用域常量。  letlet声明弥补了ECMAScript没有块级作用域的缺憾。用let声明的变量仅在块级作用域内有效： 12for(let i = 0; i &amp;lt; 5; i++) &amp;#123;&amp;#125;console.log(i); // undefined  constc">
 
 
 
@@ -375,7 +375,33 @@
       
 
       
-        <h2 id="类型扩展"><a href="#类型扩展" class="headerlink" title="类型扩展"></a>类型扩展</h2><h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><h2 id="Set与Map"><a href="#Set与Map" class="headerlink" title="Set与Map"></a>Set与Map</h2><h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>
+        <h2 id="类型扩展"><a href="#类型扩展" class="headerlink" title="类型扩展"></a>类型扩展</h2><h3 id="let与const声明"><a href="#let与const声明" class="headerlink" title="let与const声明"></a>let与const声明</h3><p><code>let</code>与<code>const</code>是ES6新增的变量声明方式，前者用于定义块级作用变量，后者用于定义块级作用域常量。</p>
+<ol>
+<li><p>let<br><code>let</code>声明弥补了ECMAScript没有块级作用域的缺憾。用<code>let</code>声明的变量仅在块级作用域内有效：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>const<br><code>const</code>用于声明常量。与<code>let</code>一样，只在块级作用域内有效。声明时必须初始化常量，且此后不得修改。如果未初始化常量或者声明后修改，都会抛出错误。<code>const</code>实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址不得改动。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> berry = <span class="string">'berry'</span>;</span><br><span class="line">berry = <span class="string">'a'</span>; <span class="comment">// TypeError: Assignment to constant variable</span></span><br><span class="line"><span class="keyword">const</span> b; <span class="comment">// SyntaxError: Missing initializer in const declaration</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p><code>let</code>与<code>const</code>不存在变量提升，即一旦使用其中一个声明变量，声明变量之前的区域成为<strong>暂时性死区</strong>，在其中声明同样的变量会抛出错误。</p>
+</blockquote>
+<h3 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h3><ol>
+<li><p>数组解构赋值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [foo, [[bar], baz]] = [<span class="number">1</span>, [[<span class="number">2</span>], <span class="number">3</span>]];</span><br><span class="line">foo <span class="comment">// 1</span></span><br><span class="line">bar <span class="comment">// 2</span></span><br><span class="line">baz <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [head, ...tail] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line">head <span class="comment">// 1</span></span><br><span class="line">tail <span class="comment">// [2, 3, 4]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [x, y, ...z] = [<span class="string">'a'</span>];</span><br><span class="line">x <span class="comment">// "a"</span></span><br><span class="line">y <span class="comment">// undefined</span></span><br><span class="line">z <span class="comment">// []</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对象解构赋值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; bar, foo &#125; = &#123; <span class="attr">foo</span>: <span class="string">"aaa"</span>, <span class="attr">bar</span>: <span class="string">"bbb"</span> &#125;;</span><br><span class="line">foo <span class="comment">// "aaa"</span></span><br><span class="line">bar <span class="comment">// "bbb"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; baz &#125; = &#123; <span class="attr">foo</span>: <span class="string">"aaa"</span>, <span class="attr">bar</span>: <span class="string">"bbb"</span> &#125;;</span><br><span class="line">baz <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; <span class="attr">foo</span>: baz &#125; = &#123; <span class="attr">foo</span>: <span class="string">'aaa'</span>, <span class="attr">bar</span>: <span class="string">'bbb'</span> &#125;;</span><br><span class="line">baz <span class="comment">// "aaa"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> &#123;x, y = <span class="number">5</span>&#125; = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;; <span class="comment">// 默认值</span></span><br><span class="line">x <span class="comment">// 1</span></span><br><span class="line">y <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> &#123;<span class="attr">x</span>: y = <span class="number">3</span>&#125; = &#123;<span class="attr">x</span>: <span class="number">5</span>&#125;;</span><br><span class="line">y <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数值和布尔值的解构赋值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;<span class="attr">toString</span>: s&#125; = <span class="number">123</span>;</span><br><span class="line">s === <span class="built_in">Number</span>.prototype.toString <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">toString</span>: s&#125; = <span class="literal">true</span>;</span><br><span class="line">s === <span class="built_in">Boolean</span>.prototype.toString <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数参数的解构赋值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">[x, y]</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line">add([<span class="number">1</span>, <span class="number">2</span>]); <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认值1：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params">&#123;x = <span class="number">0</span>, y = <span class="number">0</span>&#125; = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [x, y];</span><br><span class="line">&#125;</span><br><span class="line">move(&#123;<span class="attr">x</span>: <span class="number">3</span>, <span class="attr">y</span>: <span class="number">8</span>&#125;); <span class="comment">// [3, 8]</span></span><br><span class="line">move(&#123;<span class="attr">x</span>: <span class="number">3</span>&#125;); <span class="comment">// [3, 0]</span></span><br><span class="line">move(&#123;&#125;); <span class="comment">// [0, 0]</span></span><br><span class="line">move(); <span class="comment">// [0, 0]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认值2：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params">&#123;x, y&#125; = &#123; x: <span class="number">0</span>, y: <span class="number">0</span> &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [x, y];</span><br><span class="line">&#125;</span><br><span class="line">move(&#123;<span class="attr">x</span>: <span class="number">3</span>, <span class="attr">y</span>: <span class="number">8</span>&#125;); <span class="comment">// [3, 8]</span></span><br><span class="line">move(&#123;<span class="attr">x</span>: <span class="number">3</span>&#125;); <span class="comment">// [3, undefined]</span></span><br><span class="line">move(&#123;&#125;); <span class="comment">// [undefined, undefined]</span></span><br><span class="line">move(); <span class="comment">// [0, 0]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><h2 id="Set与Map"><a href="#Set与Map" class="headerlink" title="Set与Map"></a>Set与Map</h2><h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>
       
     </div>
     
@@ -505,7 +531,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -527,7 +553,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -582,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型扩展"><span class="nav-number">1.</span> <span class="nav-text">类型扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol"><span class="nav-number">2.</span> <span class="nav-text">Symbol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set与Map"><span class="nav-number">3.</span> <span class="nav-text">Set与Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise"><span class="nav-number">4.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历"><span class="nav-number">5.</span> <span class="nav-text">遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class"><span class="nav-number">6.</span> <span class="nav-text">Class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Module"><span class="nav-number">7.</span> <span class="nav-text">Module</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型扩展"><span class="nav-number">1.</span> <span class="nav-text">类型扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#let与const声明"><span class="nav-number">1.1.</span> <span class="nav-text">let与const声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解构赋值"><span class="nav-number">1.2.</span> <span class="nav-text">解构赋值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol"><span class="nav-number">2.</span> <span class="nav-text">Symbol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set与Map"><span class="nav-number">3.</span> <span class="nav-text">Set与Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise"><span class="nav-number">4.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历"><span class="nav-number">5.</span> <span class="nav-text">遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class"><span class="nav-number">6.</span> <span class="nav-text">Class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Module"><span class="nav-number">7.</span> <span class="nav-text">Module</span></a></li></ol></div>
             
 
           </div>

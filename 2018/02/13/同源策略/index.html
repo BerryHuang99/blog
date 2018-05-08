@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Berry&#39;s Home">
 <meta property="og:description" content="同源策略（Same origin policy）是由Netscape提出的一种安全策略约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。 定义与说明定义所谓同源是指，域名，协议，端口相同。当浏览器的某个页面执行或者请求某个资源或者脚本时，如果请求路径非同源，浏览器会在控制台中报告一个异常，提示拒绝访问。 目的保证用户信息的安全，防止恶意的网站窃取数据">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-05-06T16:09:23.819Z">
+<meta property="og:updated_time" content="2018-05-07T14:58:16.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同源策略">
 <meta name="twitter:description" content="同源策略（Same origin policy）是由Netscape提出的一种安全策略约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。 定义与说明定义所谓同源是指，域名，协议，端口相同。当浏览器的某个页面执行或者请求某个资源或者脚本时，如果请求路径非同源，浏览器会在控制台中报告一个异常，提示拒绝访问。 目的保证用户信息的安全，防止恶意的网站窃取数据">
@@ -411,7 +411,7 @@
 <p>对于iframe跨域，有四种方法：</p>
 <ul>
 <li>document.domain<br>如果两个窗口之间二级域名相同，而三级域名或更高级域名不同时，可以设置<code>document.domain</code>来规避同源策略。同Cookie跨域中的方法一。</li>
-<li><p>片段标识符（fragment identifier）<br><strong>片段标识符</strong>（fragment identifier）指的是，URL的#号后面的部分，比如<a href="http://huangyufeng.com/#fragment的#fragment。如果只是改变片段标识符，页面不会重新刷新。">http://huangyufeng.com/#fragment的#fragment。如果只是改变片段标识符，页面不会重新刷新。</a><br>父窗口可以把信息写入子窗口的片段标识符：</p>
+<li><p>片段标识符（fragment identifier）<br><strong>片段标识符</strong>（fragment identifier）指的是，URL的#号后面的部分，比如<code>http://huangyufeng.com/#fragment</code>的<code>#fragment</code>。如果只是改变片段标识符，页面不会重新刷新。<br>父窗口可以把信息写入子窗口的片段标识符：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> src = originURL + <span class="string">'#'</span> + data;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'myIFrame'</span>).src = src;</span><br></pre></td></tr></table></figure>
 <p>  子窗口通过监听hashchange事件得到通知:</p>
   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onhashchange = checkMessage;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkMessage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> message = <span class="built_in">window</span>.location.hash;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -434,11 +434,29 @@
 <p> 接收数据：</p>
  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.data); <span class="comment">// 接收到的数据</span></span><br><span class="line">    <span class="built_in">console</span>.log(e.source); <span class="comment">// 数据源（发送数据的window对象）</span></span><br><span class="line">    <span class="built_in">console</span>.log(e.origin); <span class="comment">// 数据目的地址，用于过滤发送给其他目标的数据</span></span><br><span class="line">    e.source.postMessage(<span class="string">'newdata'</span>, <span class="string">'*'</span>); <span class="comment">// 向数据源传递数据</span></span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>LocalStorage</p>
+<li><p>LocalStorage<br>通过window.postMessage，读写其他窗口的 LocalStorage 也成为了可能:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e.origin !== <span class="string">'http://huangyufeng.com'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> payload = <span class="built_in">JSON</span>.parse(e.data);</span><br><span class="line">  localStorage.setItem(payload.key, <span class="built_in">JSON</span>.stringify(payload.data));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h3><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="二级域名定义"><a href="#二级域名定义" class="headerlink" title="二级域名定义"></a>二级域名定义</h3><p>在参考资料中将</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
+<h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h3><p>同源政策规定，AJAX请求只能发给同源的网址，否则就报错。<br>除了架设服务器代理（浏览器请求同源服务器，再由后者请求外部服务），有三种方法规避这个限制:</p>
+<ul>
+<li><p>JSONP<br>在web中通过<code>&lt;script&gt;</code>方式引入脚本的方式不受同源限制，因此，可以通过向web添加一个<code>&lt;script&gt;</code>标签，向服务器请求<code>JSON</code>数据，服务器收到请求后，将数据放在一个指定名字的回调函数里传回来：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">script.setAttribute(<span class="string">"type"</span>,<span class="string">"text/javascript"</span>);</span><br><span class="line">script.src = <span class="string">'http：//huangyufeng.com/ip?callback=foo'</span>; <span class="comment">// callback指定回调函数</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    data.attribute;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>传入参数为<code>JSON</code>对象，不需要转换。<br>JSONP只能适用于GET请求</p>
+</blockquote>
+</li>
+<li>WebSocket<br>WebSocket请求头字段中有一个字段<code>Origin</code>用于指定请求源，因此规避了同源策略。<br>详见：<a href="/2017/11/08/计算机网络之WebSocket/">《计算机网络之WebSocket》</a></li>
+<li>CORS<br><code>CORS</code>是一个W3C标准，全称是<strong>跨域资源共享</strong>（Cross-origin resource sharing）。它允许浏览器向跨源服务器，发出<code>XMLHttpRequest</code>请求，从而克服了AJAX只能同源使用的限制。<br>详见<a href="">同源策略规避之CORS</a></li>
+</ul>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="二级域名定义"><a href="#二级域名定义" class="headerlink" title="二级域名定义"></a>二级域名定义</h3><p>在查阅各类资料时，我发现对于二级域名的定义出现了两种情况：</p>
+<ol>
+<li><code>huangyufeng.com</code>为二级域名，<code>.com</code>为顶级域名（一级域名），以此类推；</li>
+<li><code>huangyufeng.com</code>为一级域名，<code>x.huangyufeng.com</code>为二级域名，以此类推。</li>
+</ol>
+<p>查阅<a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E7%BA%A7%E5%9F%9F" target="_blank" rel="noopener">维基百科</a>、<a href="https://icannwiki.org/SLD" target="_blank" rel="noopener">ICCANWiki</a>、<a href="https://archive.icann.org/en/tlds/" target="_blank" rel="noopener">ICCAN官方文档</a>后可以认定，第一种理解方式是被标准认定的。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html" target="_blank" rel="noopener">《浏览器同源政策及其规避方法》——阮一峰</a><br><a href="https://www.icann.org/" target="_blank" rel="noopener">ICCAN</a><br><a href="https://icannwiki.org/" target="_blank" rel="noopener">ICCANWiki</a></p>
+
       
     </div>
     
@@ -482,8 +500,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/14/前端安全/" rel="prev" title="前端安全">
-                前端安全 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/13/同源策略规避之CORS/" rel="prev" title="同源策略规避之CORS">
+                同源策略规避之CORS <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -568,7 +586,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -590,7 +608,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

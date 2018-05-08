@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="basis,network," />
+  <meta name="keywords" content="js,basis,browser," />
 
 
 
@@ -79,22 +79,18 @@
 
 
 
-<meta name="description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;学习计算机网络课程时，我用的是James F.kurose和Keith W.Ross编著的《计算机网络——自顶向下方法》。不得不说，看这本书是需要花很多耐心“啃”下来的。书中涉及到的内容和历史太过广泛，而很多事例又不太贴合中国人的生活习惯，总显得不那么贴切。在此，我们换个方式，从快递网络认识计算机网络。 网络分层实际网络分层：&amp;ensp;&amp;ensp;">
-<meta name="keywords" content="basis,network">
+<meta name="description" content="CORS是一个W3C标准，全称是”跨域资源共享”（Cross-origin resource sharing）。它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。 特点兼容情况CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。 服务器实现实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可">
+<meta name="keywords" content="js,basis,browser">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络基础（一）">
-<meta property="og:url" content="http://huangyufeng.com/2017/10/24/计算机网络基础（一）/index.html">
+<meta property="og:title" content="同源策略规避之CORS">
+<meta property="og:url" content="http://huangyufeng.com/2018/02/13/同源策略规避之CORS/index.html">
 <meta property="og:site_name" content="Berry&#39;s Home">
-<meta property="og:description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;学习计算机网络课程时，我用的是James F.kurose和Keith W.Ross编著的《计算机网络——自顶向下方法》。不得不说，看这本书是需要花很多耐心“啃”下来的。书中涉及到的内容和历史太过广泛，而很多事例又不太贴合中国人的生活习惯，总显得不那么贴切。在此，我们换个方式，从快递网络认识计算机网络。 网络分层实际网络分层：&amp;ensp;&amp;ensp;">
+<meta property="og:description" content="CORS是一个W3C标准，全称是”跨域资源共享”（Cross-origin resource sharing）。它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。 特点兼容情况CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。 服务器实现实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可">
 <meta property="og:locale" content="mul">
-<meta property="og:image" content="http://huangyufeng.com/2017/10/24/计算机网络基础（一）/osi.jpg">
-<meta property="og:image" content="http://huangyufeng.com/2017/10/24/计算机网络基础（一）/progress.jpg">
-<meta property="og:image" content="http://huangyufeng.com/2017/10/24/计算机网络基础（一）/isps.jpg">
-<meta property="og:updated_time" content="2018-04-29T07:11:18.068Z">
+<meta property="og:updated_time" content="2018-05-07T16:13:58.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计算机网络基础（一）">
-<meta name="twitter:description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;学习计算机网络课程时，我用的是James F.kurose和Keith W.Ross编著的《计算机网络——自顶向下方法》。不得不说，看这本书是需要花很多耐心“啃”下来的。书中涉及到的内容和历史太过广泛，而很多事例又不太贴合中国人的生活习惯，总显得不那么贴切。在此，我们换个方式，从快递网络认识计算机网络。 网络分层实际网络分层：&amp;ensp;&amp;ensp;">
-<meta name="twitter:image" content="http://huangyufeng.com/2017/10/24/计算机网络基础（一）/osi.jpg">
+<meta name="twitter:title" content="同源策略规避之CORS">
+<meta name="twitter:description" content="CORS是一个W3C标准，全称是”跨域资源共享”（Cross-origin resource sharing）。它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。 特点兼容情况CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。 服务器实现实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://huangyufeng.com/2017/10/24/计算机网络基础（一）/"/>
+  <link rel="canonical" href="http://huangyufeng.com/2018/02/13/同源策略规避之CORS/"/>
 
 
 
 
 
-  <title>计算机网络基础（一） | Berry's Home</title>
+  <title>同源策略规避之CORS | Berry's Home</title>
   
 
 
@@ -267,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://huangyufeng.com/2017/10/24/计算机网络基础（一）/">
+    <link itemprop="mainEntityOfPage" href="http://huangyufeng.com/2018/02/13/同源策略规避之CORS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Berry Huang">
@@ -284,7 +280,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">计算机网络基础（一）</h2>
+          <h2 class="post-title" itemprop="name headline">同源策略规避之CORS</h2>
         
 
         <div class="post-meta">
@@ -296,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-24T00:00:00+08:00">
-                2017-10-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-13T22:33:12+08:00">
+                2018-02-13
               </time>
             
 
@@ -338,8 +334,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/24/计算机网络基础（一）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2017/10/24/计算机网络基础（一）/" itemprop="commentsCount"></span>
+                <a href="/2018/02/13/同源策略规避之CORS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2018/02/13/同源策略规避之CORS/" itemprop="commentsCount"></span>
                 </a>
               </span>
               <!--/noindex-->
@@ -348,7 +344,7 @@
 
           
           
-             <span id="/2017/10/24/计算机网络基础（一）/" class="leancloud_visitors" data-flag-title="计算机网络基础（一）">
+             <span id="/2018/02/13/同源策略规避之CORS/" class="leancloud_visitors" data-flag-title="同源策略规避之CORS">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -379,23 +375,45 @@
       
 
       
-        <p>&ensp;&ensp;&ensp;&ensp;学习计算机网络课程时，我用的是James F.kurose和Keith W.Ross编著的<strong>《计算机网络——自顶向下方法》</strong>。不得不说，看这本书是需要花很多耐心“啃”下来的。书中涉及到的内容和历史太过广泛，而很多事例又不太贴合中国人的生活习惯，总显得不那么贴切。在此，我们换个方式，从快递网络认识计算机网络。</p>
-<h2 id="网络分层"><a href="#网络分层" class="headerlink" title="网络分层"></a>网络分层</h2><h3 id="实际网络分层："><a href="#实际网络分层：" class="headerlink" title="实际网络分层："></a>实际网络分层：</h3><p>&ensp;&ensp;&ensp;&ensp;在计算机网络中存在着各式各样的协议，每一种协议都规定了数据在传输的不同阶段需要满足的条件和标准，以保证数据能在不同的传输阶段被正确处理和分发，遇到问题时也能被及时解决。而数据所在的不同阶段被划分成了不同的层级。各类协议（所有协议合称为协议栈（protocol stack））依据所在的层级也被划分成<strong>5个层级</strong>：</p>
-<pre><code>- 物理层
-- 链路层
-- 网络层
-- 运输层
-- 应用层
-</code></pre><h3 id="OSI参考模型："><a href="#OSI参考模型：" class="headerlink" title="OSI参考模型："></a>OSI参考模型：</h3><p>&ensp;&ensp;&ensp;&ensp;国际标准化组织（ISO）提出计算机网络组织为<strong>7层</strong>，称为开放系统互联（OSI）模型。7层模型比实际的5级分层多了两个分层：会话层、表示层。<br><img src="/2017/10/24/计算机网络基础（一）/osi.jpg" alt="OSI模型"><br>&ensp;&ensp;&ensp;&ensp;<strong>会话层</strong>提供了数据交换定界和同步功能，包括了建立检查点和恢复方案的方法。<strong>表示层</strong>的作用是使应用程序能够解释交换数据的含义。这两个层级在因特网结构中包含在应用层中。</p>
-<h2 id="类比——寄件"><a href="#类比——寄件" class="headerlink" title="类比——寄件"></a>类比——寄件</h2><p>&ensp;&ensp;&ensp;&ensp;在<strong>《计算机网络——自顶向下方法》</strong>中用航班服务流程类比计算机网络中数据的传输，但我觉得用我们生活中常用的快递服务来类比，更容易理解：</p>
-<p>&ensp;&ensp;&ensp;&ensp;在寄快件时，我们会在家中把我们要寄出去的东西，以及快递公司提供的标签（快递单）准备好。在标签上注明寄件的地址、邮编等信息，然后把准备好的快件交给快递公司。快递公司收件之后，把快件打包好，运送到最近的集散中心，根据快件上的标签把快件分类，经过审核认证后，登记快递信息，然后把快递送上对应的运输通道。快递通过各种交通运送到目的地的集散中心，集散中心收件后登记收件信息，然后根据快件的详细地址把快件再次分类派发到对应地址的快递站。快递站收件后联系收件人，把货物交递到收件人手中。收件人拆开包装，开始使用。</p>
-<p><img src="/2017/10/24/计算机网络基础（一）/progress.jpg" alt="寄件流程"></p>
-<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>&ensp;&ensp;&ensp;&ensp;生活中寄件的流程和计算机网络极其相似。在<strong>应用层</strong>，我们准备好数据，选择好传递方式，填好对应的标签，如HTTP、SMTP、FTP等协议，上面记录着传输数据的类型、大小、目的地址以及使用的端口号（端口号类似快递地址的具体门牌号）等信息。此时包装的数据被称为<strong>报文</strong>（message）。然后把报文交递给运输层。</p>
-<h3 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h3><p>&ensp;&ensp;&ensp;&ensp;<strong>运输层</strong>中又包含TCP和UDP协议。这两个协议规定了数据的传递方式。选择TCP意为着我们传递的数据的方式是可靠的，保证了数据在运输途中的安全，就像是物流公司在运输时会更加小心翼翼避免挤压损坏货物一样，并且提供了运输途中丢包可查并补发的功能。而选择UDP协议则无法保证运输途中数据的安全，也无法得知货物是否丢失。此时的数据被称为<strong>报文段</strong>（segment）。</p>
-<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p>&ensp;&ensp;&ensp;&ensp;<strong>网络层</strong>类似于快递站和集散中心。它包含了计算机网络中最著名的协议——IP协议。网络层中的各个协议规定了如何识别数据的目的地址，并且如何高效的选择传递的路径并正确派发数据。此时的数据被称为<strong>数据报</strong>（datagram）。</p>
-<h3 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h3><p>&ensp;&ensp;&ensp;&ensp;<strong>链路层</strong>决定了数据在网络中的传输介质和方式，例如以太网、WiFi和电缆接入网的DOCSIS协议。这类似于快递发送时是选择飞机、汽车、火车还是轮船作为运输工具。</p>
-<h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>&ensp;&ensp;&ensp;&ensp;<strong>物理层</strong>则确定了数据传输的介质，比如双绞铜线、光纤等。这类似于邮寄时的具体路线，是公路、天空、轨道还是水路。</p>
-<h2 id="网络连接"><a href="#网络连接" class="headerlink" title="网络连接"></a>网络连接</h2><p>&ensp;&ensp;&ensp;&ensp;我们使用的互联网由均由<strong>因特网服务提供商</strong>（ISP）提供。为了真正实现网络互连，各个ISP构成了一个树状的连接结构：<br><img src="/2017/10/24/计算机网络基础（一）/isps.jpg" alt="网络连接"><br>&ensp;&ensp;&ensp;&ensp;用户通过接入ISP连接到网络，接入ISP又连接到更高级别的ISP中，如区域ISP与顶级ISP或者内容提供商。第三方公司为了方便各个ISP直接的多对多连接，提供了<strong>因特网交换点</strong>（IXP）。于是，世界网络层层连接，形成巨大的互联网。</p>
+        <p><strong>CORS</strong>是一个W3C标准，全称是”跨域资源共享”（Cross-origin resource sharing）。它允许浏览器向跨源服务器，发出<code>XMLHttpRequest</code>请求，从而克服了AJAX只能同源使用的限制。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><h3 id="兼容情况"><a href="#兼容情况" class="headerlink" title="兼容情况"></a>兼容情况</h3><p>CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。</p>
+<h3 id="服务器实现"><a href="#服务器实现" class="headerlink" title="服务器实现"></a>服务器实现</h3><p>实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。浏览器发送AJAX请求时会自动判断是否为跨域请求，不需要客户端做出额外的编码。</p>
+<h2 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>只要同时满足以下两大条件，就属于简单请求:</p>
+<ol>
+<li>请求方法是以下三种方法之一：<ul>
+<li>HEAD</li>
+<li>GET</li>
+<li>POST</li>
+</ul>
+</li>
+<li>HTTP的头信息不超出以下几种字段：<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain</li>
+</ul>
+</li>
+</ol>
+<h3 id="跨域实现"><a href="#跨域实现" class="headerlink" title="跨域实现"></a>跨域实现</h3><p>对于AJAX简单请求，浏览器就自动在头信息之中，添加一个Origin字段指明请求源（类似WebSocket的跨域原理）。服务器判断Orign是否在其许可范围内，如果在其许可范围内，则返回一个含有<code>Access-Control-Allow-Origin</code>响应头字段的HTTP响应。如果不在范围内，则返回一个不含<code>Access-Control-Allow-Origin</code>响应头字段的HTTP响应（状态码可能依旧是200 OK），浏览器判断响应中不含<code>Access-Control-Allow-Origin</code>后将抛出异常。</p>
+<p>关于跨域的HTTP响应头字段如下：</p>
+<ol>
+<li><p>Access-Control-Allow-Origin：<br>该字段是必须的。它的值要么是请求时Origin字段的值，要么是一个*，表示接受任意域名的请求。</p>
+</li>
+<li><p>Access-Control-Allow-Credentials:<br>该字段可选。它的值是一个布尔值，表示是否允许发送Cookie。默认情况下，Cookie不包括在CORS请求之中。这个值只能设为true，如果服务器不要浏览器发送Cookie，删除该字段即可。<strong>同时，浏览器端还需要将<code>XmlHttpRequest</code>的<code>withCredentials</code>属性同时设置为true方能真正生效。</strong></p>
+</li>
+<li><p>Access-Control-Expose-Headers:<br>该字段可选。CORS请求时，XMLHttpRequest对象的getResponseHeader()方法只能拿到6个基本字段：Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma。如果想拿到其他字段，就必须在Access-Control-Expose-Headers里面指定。</p>
+</li>
+</ol>
+<h2 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>非简单请求是那种对服务器有特殊要求的请求，比如请求方法是<code>PUT</code>或<code>DELETE</code>，或者<code>Content-Type</code>字段的类型是<code>application/json</code>。</p>
+<h3 id="跨域要求"><a href="#跨域要求" class="headerlink" title="跨域要求"></a>跨域要求</h3><p>非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为”预检”请求（preflight）。浏览器先用<code>OPTIONS</code>方法询问服务器，当前网页所在的域名（Origin字段）是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的<code>XMLHttpRequest</code>请求，否则就报错。</p>
+<p>除了<code>Origin</code>字段，”预检”请求的头信息包括两个特殊字段:</p>
+<ol>
+<li>Access-Control-Request-Method:<br>该字段是必须的，用来列出浏览器的CORS请求会用到哪些HTTP方法。</li>
+<li>Access-Control-Request-Headers:<br>该字段可选，指定浏览器CORS请求会额外发送的头信息字段。</li>
+</ol>
+<p>与简单请求一样，在确认<code>Origin</code>范围后，服务器返回一个带有<code>Access-Control-Allow-Origin</code>字段的响应报文，告知浏览器可以正常跨域访问。一旦服务器通过了”预检”请求，以后每次浏览器正常的CORS请求，就都跟简单请求一样，会有一个<code>Origin</code>头信息字段。服务器的回应，也都会有一个<code>Access-Control-Allow-Origin</code>头信息字段。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">《跨域资源共享 CORS 详解》——阮一峰</a></p>
 
       
     </div>
@@ -413,9 +431,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/js/" rel="tag"># js</a>
+          
             <a href="/tags/basis/" rel="tag"># basis</a>
           
-            <a href="/tags/network/" rel="tag"># network</a>
+            <a href="/tags/browser/" rel="tag"># browser</a>
           
         </div>
       
@@ -428,8 +448,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/22/操作系统基础/" rel="next" title="操作系统基础">
-                <i class="fa fa-chevron-left"></i> 操作系统基础
+              <a href="/2018/02/13/同源策略/" rel="next" title="同源策略">
+                <i class="fa fa-chevron-left"></i> 同源策略
               </a>
             
           </div>
@@ -438,8 +458,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/27/计算机网络基础（二）/" rel="prev" title="计算机网络基础（二）">
-                计算机网络基础（二） <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/14/前端安全/" rel="prev" title="前端安全">
+                前端安全 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -601,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络分层"><span class="nav-number">1.</span> <span class="nav-text">网络分层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实际网络分层："><span class="nav-number">1.1.</span> <span class="nav-text">实际网络分层：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OSI参考模型："><span class="nav-number">1.2.</span> <span class="nav-text">OSI参考模型：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类比——寄件"><span class="nav-number">2.</span> <span class="nav-text">类比——寄件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用层"><span class="nav-number">2.1.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运输层"><span class="nav-number">2.2.</span> <span class="nav-text">运输层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络层"><span class="nav-number">2.3.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链路层"><span class="nav-number">2.4.</span> <span class="nav-text">链路层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理层"><span class="nav-number">2.5.</span> <span class="nav-text">物理层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络连接"><span class="nav-number">3.</span> <span class="nav-text">网络连接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容情况"><span class="nav-number">1.1.</span> <span class="nav-text">兼容情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器实现"><span class="nav-number">1.2.</span> <span class="nav-text">服务器实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单请求"><span class="nav-number">2.</span> <span class="nav-text">简单请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域实现"><span class="nav-number">2.2.</span> <span class="nav-text">跨域实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非简单请求"><span class="nav-number">3.</span> <span class="nav-text">非简单请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-1"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域要求"><span class="nav-number">3.2.</span> <span class="nav-text">跨域要求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -786,7 +806,7 @@
 		_hcwp.push({widget:"Bloggerstream", widget_id: 103636, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
 		
-		_hcwp.push({widget:"Stream", widget_id: 103636, xid: "2017/10/24/计算机网络基础（一）/"});
+		_hcwp.push({widget:"Stream", widget_id: 103636, xid: "2018/02/13/同源策略规避之CORS/"});
 		
 
 		(function() {

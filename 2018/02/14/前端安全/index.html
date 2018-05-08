@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="XSS跨站脚本（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许攻击者将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 CSRF跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session ridi">
+<meta name="description" content="XSS定义跨站脚本（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许攻击者将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 攻击形式 非持久型攻击有些网站的网页内容与url参数相关，攻击者找到漏洞地址后，修改其中的url，然后发给别人，诱使别人点击，从而通过执行脚本，获取对方的">
 <meta name="keywords" content="security">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端安全">
 <meta property="og:url" content="http://huangyufeng.com/2018/02/14/前端安全/index.html">
 <meta property="og:site_name" content="Berry&#39;s Home">
-<meta property="og:description" content="XSS跨站脚本（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许攻击者将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 CSRF跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session ridi">
+<meta property="og:description" content="XSS定义跨站脚本（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许攻击者将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 攻击形式 非持久型攻击有些网站的网页内容与url参数相关，攻击者找到漏洞地址后，修改其中的url，然后发给别人，诱使别人点击，从而通过执行脚本，获取对方的">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-05-05T15:47:29.137Z">
+<meta property="og:updated_time" content="2018-05-08T11:23:45.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端安全">
-<meta name="twitter:description" content="XSS跨站脚本（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许攻击者将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 CSRF跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session ridi">
+<meta name="twitter:description" content="XSS定义跨站脚本（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许攻击者将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 攻击形式 非持久型攻击有些网站的网页内容与url参数相关，攻击者找到漏洞地址后，修改其中的url，然后发给别人，诱使别人点击，从而通过执行脚本，获取对方的">
 
 
 
@@ -375,8 +375,47 @@
       
 
       
-        <h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><p>跨站脚本（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许攻击者将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。</p>
-<h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><p>跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。</p>
+        <h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>跨站脚本</strong>（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许攻击者将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。</p>
+<h3 id="攻击形式"><a href="#攻击形式" class="headerlink" title="攻击形式"></a>攻击形式</h3><ol>
+<li><p>非持久型攻击<br>有些网站的网页内容与url参数相关，攻击者找到漏洞地址后，修改其中的url，然后发给别人，诱使别人点击，从而通过执行脚本，获取对方的cookie。攻击者得到对方的cookie后，就可以为所欲为了。这种方式往往是一次性的。</p>
+</li>
+<li><p>持久型攻击<br>有些内容生成网站，比如博客站，有非常多的用户输入页。用户敲了一篇博客，存到网站数据库，然后网站读出内容，呈现给其他用户。此时，如果不对用户输出的内容加以过滤，攻击者就可以注入一些js脚本内容。这样，别人点击这篇博客时，已经在执行攻击者所写的js脚本了。</p>
+</li>
+</ol>
+<h3 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h3><ol>
+<li>获取他人隐私信息；</li>
+<li>破坏、修改网站原本页面内容；</li>
+<li>跳转到其他恶意页面；</li>
+<li>如果页面影响大，可以对其他网站发起DDoS攻击。</li>
+</ol>
+<h3 id="预防"><a href="#预防" class="headerlink" title="预防"></a>预防</h3><ol>
+<li><p>过滤用户输入：<br>对于网站上有用户输入的部分，如各种表单内容、富文本内容，都应该对js脚本进行过滤，直接去除或者替换修改。</p>
+</li>
+<li><p>对不可信输出转义、编码：<br>对用户输入的内容进行输出时，对其进行转义、编码，防止其中含有恶意脚本。</p>
+</li>
+<li><p>安全Cookie：<br>将cookie设置HttpOnly后，js就无法获取到该网站的cookie。自然也没办法将其他用户的隐私信息传到自己的服务器。</p>
+</li>
+<li><p>提高防范意识、多测试：<br>利用XSS测试工具对网站进行测试，找出漏洞并及时补救。</p>
+</li>
+</ol>
+<h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p><strong>跨站请求伪造</strong>（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，通常缩写为 CSRF 或者 XSRF，是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。</p>
+<h3 id="攻击形势"><a href="#攻击形势" class="headerlink" title="攻击形势"></a>攻击形势</h3><ol>
+<li><p>通过GET请求攻击：<br>对于一些资源操作请求，比如留言等，使用GET请求时，攻击者可以通过网站伪装成用户，向用户刚刚浏览过的网站服务器发送一条GET请求，修改其中的参数以使服务器按照攻击者的意图执行。</p>
+</li>
+<li><p>通过XSS进行攻击：<br>攻击者通过XSS很容易获取到Cookie中的用户信息。通过这些信息，攻击者很容易伪装成用户对服务端进行恶意访问。</p>
+</li>
+</ol>
+<h3 id="预防-1"><a href="#预防-1" class="headerlink" title="预防"></a>预防</h3><ol>
+<li><p>规范请求类型：<br>避免使用GET发起资源操作请求；</p>
+</li>
+<li><p>检查Referer / Origin:<br>检查请求来源是否为可信任网站；</p>
+</li>
+<li><p>设置请求Token：<br>访问页面时，服务端会在页面写入一个随机token值,并设置token生命周期。之后我的请求就必须带上此次token值，请求过的token就会失效，无法再用。登录时的验证码就是在此原理基础之上实现的。</p>
+</li>
+<li><p>防住第一道防线-XSS<br>防止Cookie通过XSS被恶意窃取，防止攻击者伪装成用户进行正常访问。</p>
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000009514661" target="_blank" rel="noopener">《常见网络攻击–XSS &amp;&amp; CSRF》</a></p>
 
       
     </div>
@@ -407,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/13/同源策略/" rel="next" title="同源策略">
-                <i class="fa fa-chevron-left"></i> 同源策略
+              <a href="/2018/02/13/同源策略规避之CORS/" rel="next" title="同源策略规避之CORS">
+                <i class="fa fa-chevron-left"></i> 同源策略规避之CORS
               </a>
             
           </div>
@@ -503,7 +542,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -525,7 +564,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -580,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS"><span class="nav-number">1.</span> <span class="nav-text">XSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF"><span class="nav-number">2.</span> <span class="nav-text">CSRF</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS"><span class="nav-number">1.</span> <span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#攻击形式"><span class="nav-number">1.2.</span> <span class="nav-text">攻击形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#危害"><span class="nav-number">1.3.</span> <span class="nav-text">危害</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预防"><span class="nav-number">1.4.</span> <span class="nav-text">预防</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF"><span class="nav-number">2.</span> <span class="nav-text">CSRF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-1"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#攻击形势"><span class="nav-number">2.2.</span> <span class="nav-text">攻击形势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预防-1"><span class="nav-number">2.3.</span> <span class="nav-text">预防</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
