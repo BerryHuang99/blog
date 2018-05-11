@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="a personal blog and record of berry">
+<meta name="description" content="简介什么是WebpackWebpack是一种前端模块打包工具：分析项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其转换和打包为合适的格式供浏览器使用。  与Gulp、Grunt对比 Grunt和Gulp的工作方式是：在一个配置文件中，指明对某些文件进行类似编译，组合，压缩等任务的具体步骤，工具之后可以自动替你完成这些任务。">
 <meta name="keywords" content="advanced,js,webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Webpack学习笔记">
 <meta property="og:url" content="http://huangyufeng.com/2018/01/29/Webpack学习笔记/index.html">
 <meta property="og:site_name" content="Berry&#39;s Home">
-<meta property="og:description" content="a personal blog and record of berry">
+<meta property="og:description" content="简介什么是WebpackWebpack是一种前端模块打包工具：分析项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其转换和打包为合适的格式供浏览器使用。  与Gulp、Grunt对比 Grunt和Gulp的工作方式是：在一个配置文件中，指明对某些文件进行类似编译，组合，压缩等任务的具体步骤，工具之后可以自动替你完成这些任务。">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-05-01T14:06:27.200Z">
+<meta property="og:image" content="http://huangyufeng.com/2018/01/29/Webpack学习笔记/webpack.png">
+<meta property="og:updated_time" content="2018-05-10T08:13:09.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Webpack学习笔记">
-<meta name="twitter:description" content="a personal blog and record of berry">
+<meta name="twitter:description" content="简介什么是WebpackWebpack是一种前端模块打包工具：分析项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其转换和打包为合适的格式供浏览器使用。  与Gulp、Grunt对比 Grunt和Gulp的工作方式是：在一个配置文件中，指明对某些文件进行类似编译，组合，压缩等任务的具体步骤，工具之后可以自动替你完成这些任务。">
+<meta name="twitter:image" content="http://huangyufeng.com/2018/01/29/Webpack学习笔记/webpack.png">
 
 
 
@@ -375,7 +377,19 @@
       
 
       
-        
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="什么是Webpack"><a href="#什么是Webpack" class="headerlink" title="什么是Webpack"></a>什么是Webpack</h3><p><strong>Webpack</strong>是一种前端<strong>模块打包工具</strong>：分析项目结构，找到<code>JavaScript</code>模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其转换和打包为合适的格式供浏览器使用。</p>
+<p><img src="/2018/01/29/Webpack学习笔记/webpack.png" alt="webpack"></p>
+<h3 id="与Gulp、Grunt对比"><a href="#与Gulp、Grunt对比" class="headerlink" title="与Gulp、Grunt对比"></a>与Gulp、Grunt对比</h3><ul>
+<li><strong>Grunt</strong>和<strong>Gulp</strong>的工作方式是：在一个配置文件中，指明对某些文件进行类似编译，组合，压缩等任务的具体步骤，工具之后可以自动替你完成这些任务。</li>
+<li><strong>Webpack</strong>的工作方式是：把你的项目当做一个整体，通过一个给定的主文件（如：index.js），Webpack将从这个文件开始找到你的项目的所有依赖文件，使用<code>loaders</code>处理它们，最后打包为一个（或多个）浏览器可识别的JavaScript文件。</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//全局安装</span><br><span class="line">$ npm install -g webpack</span><br><span class="line">//安装到你的项目目录</span><br><span class="line">$ npm install webpack webpack-cli --save-dev</span><br></pre></td></tr></table></figure>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">node_modules</span><br><span class="line">src</span><br><span class="line">|-index.js</span><br><span class="line">|-a.js</span><br><span class="line">|-b.js</span><br><span class="line">public</span><br><span class="line">|-index.html</span><br><span class="line">package.json</span><br></pre></td></tr></table></figure>
+<h3 id="内容书写"><a href="#内容书写" class="headerlink" title="内容书写"></a>内容书写</h3><ul>
+<li>在所有资源的统一入口文件<code>index.html</code>中，添加<code>&lt;script&gt;</code>标签，引入最后输出的脚本名，如<code>index.js</code>：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
       
     </div>
     
@@ -478,8 +492,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -563,6 +586,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Webpack"><span class="nav-number">1.1.</span> <span class="nav-text">什么是Webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与Gulp、Grunt对比"><span class="nav-number">1.2.</span> <span class="nav-text">与Gulp、Grunt对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目结构"><span class="nav-number">2.2.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容书写"><span class="nav-number">2.3.</span> <span class="nav-text">内容书写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展"><span class="nav-number">3.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

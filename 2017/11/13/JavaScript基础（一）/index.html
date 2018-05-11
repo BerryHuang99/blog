@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以。。。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存在的资源共享问题和">
+<meta name="description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以需要进行充分的单元测试。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存">
 <meta name="keywords" content="js,basis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript基础（一）">
 <meta property="og:url" content="http://huangyufeng.com/2017/11/13/JavaScript基础（一）/index.html">
 <meta property="og:site_name" content="Berry&#39;s Home">
-<meta property="og:description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以。。。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存在的资源共享问题和">
+<meta property="og:description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以需要进行充分的单元测试。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存">
 <meta property="og:locale" content="mul">
 <meta property="og:image" content="http://huangyufeng.com/2017/11/13/JavaScript基础（一）/storage.png">
-<meta property="og:updated_time" content="2018-05-02T07:10:49.443Z">
+<meta property="og:updated_time" content="2018-05-09T06:19:52.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript基础（一）">
-<meta name="twitter:description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以。。。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存在的资源共享问题和">
+<meta name="twitter:description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以需要进行充分的单元测试。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存">
 <meta name="twitter:image" content="http://huangyufeng.com/2017/11/13/JavaScript基础（一）/storage.png">
 
 
@@ -379,7 +379,7 @@
       
         <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
 <li>弱类型</li>
-<li>解释型<br>  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以。。。</li>
+<li>解释型<br>  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以需要进行充分的单元测试。</li>
 <li>单线程<br>  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存在的资源共享问题和线程安全问题。但JS可以通过异步申请浏览器调用其他常用线程，将JS执行线程中的异步任务交给其他线程，加入到执行队列中逐个执行。</li>
 <li>多范式<br>  JS具有<strong>命令式</strong>、<strong>函数式</strong>、<strong>面向对象</strong>三种变成范式。</li>
 </ul>
@@ -425,7 +425,7 @@
 <li><p>数值的范围为 Number.MIN_VALUE - Number.MAX_VALUE 超出范围则变成 (-Infinity[Number.NEGATIVE_INFINITY] || Infinity[Number.POSITIVE_INFINITY]) 不能进行计算。</p>
 </li>
 </ul>
-<h3 id="内存问题"><a href="#内存问题" class="headerlink" title="内存问题"></a>内存问题</h3><p>JavaScript具有自动垃圾收集机制，也就是说，执行环境会负责管理代码执行过程中使用的内存。具体到浏览器中的实现，则通常有两<br>个策略:</p>
+<h3 id="内存问题"><a href="#内存问题" class="headerlink" title="内存问题"></a>内存问题</h3><p>JavaScript具有自动垃圾收集机制，也就是说，执行环境会负责管理代码执行过程中使用的内存。具体到浏览器中的实现，则通常有两个策略:</p>
 <ul>
 <li><p>标记清除</p>
 <ol>
@@ -437,14 +437,15 @@
 <li><p>引用计数</p>
 <ol>
 <li>当引用一个值时，其引用次数++;</li>
-<li>当引用次数等于0时，清掉对应内存。<blockquote>
-<p>标记清楚策略中，由于垃圾收集器是固定间隔回收内存的，所以在工作量较大的程序中效率并不是十分理想，但主流浏览器都采用这种方式。<br>引用计数面对<strong>循环引用</strong>时将显得力不从心，即当两个对象中均包含一个对方的引用时，这两个对象的引用次数永不为0。</p>
-</blockquote>
-</li>
+<li>当引用次数等于0时，清掉对应内存。</li>
 </ol>
 </li>
-<li><p>解除引用<br>  当确认一个变量不再引用之后，最好将其赋值为<code>null</code>，以确保内存回收机制能回收该引用，提高回收性能。</p>
-</li>
+</ul>
+<blockquote>
+<p>标记清楚策略中，由于垃圾收集器是固定间隔回收内存的，所以在工作量较大的程序中效率并不是十分理想，但主流浏览器都采用这种方式。<br>引用计数面对<strong>循环引用</strong>时将显得力不从心，即当两个对象中均包含一个对方的引用时，这两个对象的引用次数永不为0。</p>
+</blockquote>
+<ul>
+<li>解除引用<br>  当确认一个变量不再引用之后，最好将其赋值为<code>null</code>，以确保内存回收机制能回收该引用，提高回收性能。</li>
 </ul>
 <h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><p>JS中除了前面提及的基本类型外，还有<strong>引用类型</strong>。引用类型是一种数据结构，<br>用于将数据和功能组织在一起。</p>
 <ul>
@@ -514,12 +515,12 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reduce(calback) <span class="comment">// 从第一项开始，第一个参数为之前callback的运算结果，第二个参数为当前项</span></span><br><span class="line">reduceRight(callback)   <span class="comment">// 反向归并</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>删除元素</p>
-</li>
-</ul>
 <ol>
 <li>使用splice方法；</li>
 <li><code>(length - a)</code>，删除a个元素。</li>
 </ol>
+</li>
+</ul>
 </li>
 <li><p>基本包装类型<br>基本类型可以直接调用它们对应包装类的方法，但这并不等于基本类型和包装类型是一样的。基本类型调用包装类型的方法其实是将基本类型先转换成包装类型，调用方法结束后立即销毁生成的包装类。</p>
 <blockquote>
