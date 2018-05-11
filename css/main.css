@@ -3149,6 +3149,29 @@ pre .javascript .function {
     -ms-filter: grayscale(90%);
     -o-filter: grayscale(90%);
     height: 230px;
+    animation: inner-shadow 2s;
+    -webkit-animation: inner-shadow 2s;
+    -moz-animation: inner-shadow 2s;
+    -ms-animation: inner-shadow 2s;
+    -o-animation: inner-shadow 2s;
+  }
+  .item-title {
+    width: 250px;
+  }
+}
+@media screen and (min-width: 1450px) {
+  #banner {
+    filter: grayscale(90%);
+    -webkit-filter: grayscale(90%);
+    -moz-filter: grayscale(90%);
+    -ms-filter: grayscale(90%);
+    -o-filter: grayscale(90%);
+    height: 330px;
+    animation: inner-shadow2 2s;
+    -webkit-animation: inner-shadow2 2s;
+    -moz-animation: inner-shadow2 2s;
+    -ms-animation: inner-shadow2 2s;
+    -o-animation: inner-shadow2 2s;
   }
   .item-title {
     width: 250px;
@@ -3163,7 +3186,6 @@ pre .javascript .function {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   box-shadow: 0 0 30px 30px #fff inset;
-  animation: inner-shadow 1s;
 }
 .quotes {
   color: #fff;
@@ -3226,6 +3248,38 @@ pre .javascript .function {
 @keyframes inner-shadow {
   0% {
     box-shadow: 0 0 150px 150px #fff inset;
+  }
+  100% {
+    box-shadow: 0 0 30px 30px #fff inset;
+  }
+}
+@-moz-keyframes inner-shadow2 {
+  0% {
+    box-shadow: 0 0 400px 400px #fff inset;
+  }
+  100% {
+    box-shadow: 0 0 30px 30px #fff inset;
+  }
+}
+@-webkit-keyframes inner-shadow2 {
+  0% {
+    box-shadow: 0 0 400px 400px #fff inset;
+  }
+  100% {
+    box-shadow: 0 0 30px 30px #fff inset;
+  }
+}
+@-o-keyframes inner-shadow2 {
+  0% {
+    box-shadow: 0 0 400px 400px #fff inset;
+  }
+  100% {
+    box-shadow: 0 0 30px 30px #fff inset;
+  }
+}
+@keyframes inner-shadow2 {
+  0% {
+    box-shadow: 0 0 400px 400px #fff inset;
   }
   100% {
     box-shadow: 0 0 30px 30px #fff inset;
