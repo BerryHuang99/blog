@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="basis,RegExp," />
+  <meta name="keywords" content="advanced,RegExp," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="a personal blog and record of berry">
-<meta name="keywords" content="basis,RegExp">
+<meta name="description" content="正则表达式作为一种方便的符号匹配规则，实现时必须依赖一套高效的算法，这套算法就被称之为正则表达式引擎。实现正则表达式引擎的方法分为两种：DFA自动机（Deterministic Final Automata | 确定型有穷自动机）和NFA自动机（Nondeterministic Final Auomaton | 不确定型有穷自动机）。 原理简析DFA在输入一个状态时，只得到一个固定的状态。DFA有">
+<meta name="keywords" content="advanced,RegExp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则之NFA与DFA">
 <meta property="og:url" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/index.html">
 <meta property="og:site_name" content="Berry&#39;s Home">
-<meta property="og:description" content="a personal blog and record of berry">
+<meta property="og:description" content="正则表达式作为一种方便的符号匹配规则，实现时必须依赖一套高效的算法，这套算法就被称之为正则表达式引擎。实现正则表达式引擎的方法分为两种：DFA自动机（Deterministic Final Automata | 确定型有穷自动机）和NFA自动机（Nondeterministic Final Auomaton | 不确定型有穷自动机）。 原理简析DFA在输入一个状态时，只得到一个固定的状态。DFA有">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-07-24T14:36:37.951Z">
+<meta property="og:image" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/dfa.png">
+<meta property="og:updated_time" content="2018-07-25T02:11:31.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则之NFA与DFA">
-<meta name="twitter:description" content="a personal blog and record of berry">
+<meta name="twitter:description" content="正则表达式作为一种方便的符号匹配规则，实现时必须依赖一套高效的算法，这套算法就被称之为正则表达式引擎。实现正则表达式引擎的方法分为两种：DFA自动机（Deterministic Final Automata | 确定型有穷自动机）和NFA自动机（Nondeterministic Final Auomaton | 不确定型有穷自动机）。 原理简析DFA在输入一个状态时，只得到一个固定的状态。DFA有">
+<meta name="twitter:image" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/dfa.png">
 
 
 
@@ -374,7 +376,15 @@
       
 
       
-        
+        <p>正则表达式作为一种方便的符号匹配规则，实现时必须依赖一套高效的算法，这套算法就被称之为<strong>正则表达式引擎</strong>。实现正则表达式引擎的方法分为两种：<strong>DFA自动机</strong>（Deterministic Final Automata | 确定型有穷自动机）和<strong>NFA自动机</strong>（Nondeterministic Final Auomaton | 不确定型有穷自动机）。</p>
+<h2 id="原理简析"><a href="#原理简析" class="headerlink" title="原理简析"></a>原理简析</h2><h3 id="DFA"><a href="#DFA" class="headerlink" title="DFA"></a>DFA</h3><p>在输入一个状态时，只得到一个固定的状态。DFA有一个有限状态集合和一些从一个状态通向另一个状态的边，每条边上标记有一个符号，其中一个状态是初态，某些状态是终态。但不同于不确定的有限自动机，DFA中不会有从同一状态出发的两条边标志有相同的符号。</p>
+<p>简单来说，对于正则匹配，就是待匹配的字符逐个读入，每读入一个字符即与当前正则表达式的匹配位置对比，如果匹配则判断匹配位置是否需要后移（比如当前匹配的表达式要求可出现0-n次的情况），然后继续读入新的字符。如果不匹配，判断是否可以继续向后匹配（比如当前匹配的表达式要求可出现0-n次的情况）。如果确认可继续后，再继续向后一位正则表达式匹配位置对比，如果仍然不匹配且不满足继续向后匹配条件，则匹配失败。</p>
+<p><img src="/2018/04/05/正则之NFA与DFA/dfa.png" alt="DFA"></p>
+<h3 id="NFA"><a href="#NFA" class="headerlink" title="NFA"></a>NFA</h3><p>对每个状态和输入符号都可以有多个可能的下一个状态（甚至是空）。因此，在形式化定义中，下一个状态是状态的幂集的元素，这是一组要立即考虑的状态。</p>
+<p>简单来说，对于正则匹配，</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="DFA-1"><a href="#DFA-1" class="headerlink" title="DFA"></a>DFA</h3><p>DFA自动机的时间复杂度是线性的，比起NFA自动机来说，更加稳定，但其功能受限。</p>
+<h3 id="NFA-1"><a href="#NFA-1" class="headerlink" title="NFA"></a>NFA</h3><p>NFA自动机的时间复杂度较不稳定，好坏程度取决于正则表达式的书写与匹配对象的复杂程度。但NFA相较于DFA，它具有更强大的功能。因此，它也成为Java，JavaScript，PHP，Python，Ruby实现正则表达式的方式。</p>
+
       
     </div>
     
@@ -391,7 +401,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/basis/" rel="tag"># basis</a>
+            <a href="/tags/advanced/" rel="tag"># advanced</a>
           
             <a href="/tags/RegExp/" rel="tag"># RegExp</a>
           
@@ -471,8 +481,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -557,6 +576,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理简析"><span class="nav-number">1.</span> <span class="nav-text">原理简析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DFA"><span class="nav-number">1.1.</span> <span class="nav-text">DFA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NFA"><span class="nav-number">1.2.</span> <span class="nav-text">NFA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区别"><span class="nav-number">2.</span> <span class="nav-text">区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DFA-1"><span class="nav-number">2.1.</span> <span class="nav-text">DFA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NFA-1"><span class="nav-number">2.2.</span> <span class="nav-text">NFA</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -594,6 +629,12 @@
 <span class="post-meta-divider">|</span>
 
 黔ICP备18006011号-1
+
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+  <img style="display:inline-block" src="images/备案图标.png"/>
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=52011502000379" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">贵公网安备 52011502000379号</p></a>
+</div>
+		 
 
 
 
