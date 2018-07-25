@@ -87,12 +87,13 @@
 <meta property="og:site_name" content="Berry&#39;s Home">
 <meta property="og:description" content="正则表达式作为一种方便的符号匹配规则，实现时必须依赖一套高效的算法，这套算法就被称之为正则表达式引擎。实现正则表达式引擎的方法分为两种：DFA自动机（Deterministic Final Automata | 确定型有穷自动机）和NFA自动机（Nondeterministic Final Auomaton | 不确定型有穷自动机）。 原理简析DFA在输入一个状态时，只得到一个固定的状态。DFA有">
 <meta property="og:locale" content="mul">
-<meta property="og:image" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/dfa.png">
-<meta property="og:updated_time" content="2018-07-25T02:11:31.758Z">
+<meta property="og:image" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/bfa.png">
+<meta property="og:image" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/nfa.png">
+<meta property="og:updated_time" content="2018-07-25T03:41:02.788Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则之NFA与DFA">
 <meta name="twitter:description" content="正则表达式作为一种方便的符号匹配规则，实现时必须依赖一套高效的算法，这套算法就被称之为正则表达式引擎。实现正则表达式引擎的方法分为两种：DFA自动机（Deterministic Final Automata | 确定型有穷自动机）和NFA自动机（Nondeterministic Final Auomaton | 不确定型有穷自动机）。 原理简析DFA在输入一个状态时，只得到一个固定的状态。DFA有">
-<meta name="twitter:image" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/dfa.png">
+<meta name="twitter:image" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/bfa.png">
 
 
 
@@ -378,12 +379,35 @@
       
         <p>正则表达式作为一种方便的符号匹配规则，实现时必须依赖一套高效的算法，这套算法就被称之为<strong>正则表达式引擎</strong>。实现正则表达式引擎的方法分为两种：<strong>DFA自动机</strong>（Deterministic Final Automata | 确定型有穷自动机）和<strong>NFA自动机</strong>（Nondeterministic Final Auomaton | 不确定型有穷自动机）。</p>
 <h2 id="原理简析"><a href="#原理简析" class="headerlink" title="原理简析"></a>原理简析</h2><h3 id="DFA"><a href="#DFA" class="headerlink" title="DFA"></a>DFA</h3><p>在输入一个状态时，只得到一个固定的状态。DFA有一个有限状态集合和一些从一个状态通向另一个状态的边，每条边上标记有一个符号，其中一个状态是初态，某些状态是终态。但不同于不确定的有限自动机，DFA中不会有从同一状态出发的两条边标志有相同的符号。</p>
-<p>简单来说，对于正则匹配，就是待匹配的字符逐个读入，每读入一个字符即与当前正则表达式的匹配位置对比，如果匹配则判断匹配位置是否需要后移（比如当前匹配的表达式要求可出现0-n次的情况），然后继续读入新的字符。如果不匹配，判断是否可以继续向后匹配（比如当前匹配的表达式要求可出现0-n次的情况）。如果确认可继续后，再继续向后一位正则表达式匹配位置对比，如果仍然不匹配且不满足继续向后匹配条件，则匹配失败。</p>
-<p><img src="/2018/04/05/正则之NFA与DFA/dfa.png" alt="DFA"></p>
+<p><img src="/2018/04/05/正则之NFA与DFA/bfa.png" alt="bfa"></p>
+<p>简单来说，对于正则匹配，就是待匹配的字符逐个读入，每读入一个字符，即判断它可能的后续匹配情况，进而继续读取下一个字符，在每种可能的基础上继续匹配，抛弃匹配失败的情况，如此进行下去，直至匹配完成。</p>
+<p><strong>举例</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/abc&#123;<span class="number">1</span>, <span class="number">3</span>&#125;d*[db]/g.test(<span class="string">'abccdb'</span>)</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>读入字符串中的字符<code>a</code>与表达式中的<code>a</code>匹配，匹配成功，经判断发现只有向后继续匹配一种可能，移动匹配位置到<code>b</code>；</li>
+<li>继续读入字符<code>b</code>，同上，移动匹配位置到<code>c</code>，发现<code>c</code>可能出现3中匹配情况（1-3个c），于是产生三条匹配路径；</li>
+<li>继续读入字符<code>c</code>，3种情况都匹配成功，匹配1个<code>c</code>的情况移动匹配位置至<code>d</code>，发现两种新的可能（匹配<code>d*</code>的<code>d</code>或者匹配<code>[db]</code>中的<code>d</code>）；</li>
+<li>继续读入第二个字符<code>c</code>，只出现一个<code>c</code>的情况匹配失败，只剩下（2-3个c两种情况），第2种情况同样移动匹配位至<code>d</code>并发现两种新的匹配可能；</li>
+<li>继续读入字符<code>d</code>，出现3个<code>c</code>的情况匹配失败，<code>d</code>继续与2个<code>c</code>情况下的<code>d*</code>和<code>[db]</code>分别匹配，均匹配成功，均向后移动匹配位，<code>d*</code>后又发展出现两种情况（<code>d*</code>or<code>[db]</code>）；</li>
+<li>继续读入字符<code>b</code>，发现<code>d*</code>下的另外两种可能都失败，只剩下<code>[db]</code>这样的情况匹配成功；</li>
+<li>返回true。</li>
+</ol>
 <h3 id="NFA"><a href="#NFA" class="headerlink" title="NFA"></a>NFA</h3><p>对每个状态和输入符号都可以有多个可能的下一个状态（甚至是空）。因此，在形式化定义中，下一个状态是状态的幂集的元素，这是一组要立即考虑的状态。</p>
-<p>简单来说，对于正则匹配，</p>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="DFA-1"><a href="#DFA-1" class="headerlink" title="DFA"></a>DFA</h3><p>DFA自动机的时间复杂度是线性的，比起NFA自动机来说，更加稳定，但其功能受限。</p>
-<h3 id="NFA-1"><a href="#NFA-1" class="headerlink" title="NFA"></a>NFA</h3><p>NFA自动机的时间复杂度较不稳定，好坏程度取决于正则表达式的书写与匹配对象的复杂程度。但NFA相较于DFA，它具有更强大的功能。因此，它也成为Java，JavaScript，PHP，Python，Ruby实现正则表达式的方式。</p>
+<p><img src="/2018/04/05/正则之NFA与DFA/nfa.png" alt="nfa"></p>
+<p>简单来说，对于正则匹配，同样逐个读入待匹配字符，每读一个字符，即选取多种可能的匹配规则的一种继续匹配，一旦发现匹配失败，则<strong>回溯</strong>（backtrack）到之前的状态，重新开始尝试新的一种匹配，直至匹配完成。</p>
+<p><strong>举例</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/abc&#123;<span class="number">1</span>, <span class="number">3</span>&#125;?d*[db]/g.test(<span class="string">'abccdb'</span>)</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>读入字符串中的<code>a</code>与正则中的<code>a</code>匹配，匹配成功，匹配位移动至<code>b</code>；</li>
+<li>读入字符串中的<code>b</code>，同上；</li>
+<li>读入字符串中的<code>c</code>，匹配成功，由于是lazy模式（因为可回溯，所以是NFA特有的功能），移动匹配位置到<code>d</code>；</li>
+<li>继续读入字符串中的第二个<code>c</code>，匹配失败，匹配位回溯到上一位，发现匹配位中的<code>c</code>只匹配过一次，则与该位置匹配，匹配成功后继续移动匹配位到<code>d</code>；</li>
+<li>继续读入字符串中的<code>d</code>，匹配成功，由于可能存在多匹配的情况，保持匹配位；</li>
+<li>继续读入字符<code>b</code>，匹配失败，移动匹配位至下一位，匹配失败；</li>
+<li>回溯匹配至字符串中<code>d</code>匹配之前，将<code>d</code>与<code>[db]</code>中的<code>d</code>匹配，匹配成功；</li>
+<li>将<code>b</code>与<code>[db]</code>中的<code>b</code>匹配，匹配成功；</li>
+<li>返回true。</li>
+</ol>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="DFA-1"><a href="#DFA-1" class="headerlink" title="DFA"></a>DFA</h3><p>DFA自动机的时间复杂度是线性的，比起NFA自动机来说，更加稳定，但其功能受限（不记录所有可能的路径）。DFA匹配速度，基于文本（扫描），结果是确定的。</p>
+<h3 id="NFA-1"><a href="#NFA-1" class="headerlink" title="NFA"></a>NFA</h3><p>NFA自动机的时间复杂度较不稳定，好坏程度取决于正则表达式的书写与匹配对象的复杂程度（<strong>Backtrak &lt;回溯&gt;</strong>）。但NFA相较于DFA，它具有更强大的功能。因此，它也成为Java，JavaScript，PHP，Python，Ruby实现正则表达式的方式。NFA匹配结果，基于表达式，它记录所有可能的路径。</p>
 
       
     </div>
@@ -630,7 +654,7 @@
 
 黔ICP备18006011号-1
 
-<div style="width:300px;margin:0 auto; padding:20px 0;">
+<div style="width:300px;margin:0 auto; padding:10px 0;">
   <img style="display:inline-block" src="images/备案图标.png"/>
   <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=52011502000379" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">贵公网安备 52011502000379号</p></a>
 </div>
