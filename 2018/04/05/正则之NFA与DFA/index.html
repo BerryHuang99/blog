@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="Berry&#39;s Home">
 <meta property="og:description" content="正则表达式作为一种方便的符号匹配规则，实现时必须依赖一套高效的算法，这套算法就被称之为正则表达式引擎。实现正则表达式引擎的方法分为两种：DFA自动机（Deterministic Final Automata | 确定型有穷自动机）和NFA自动机（Nondeterministic Final Auomaton | 不确定型有穷自动机）。 原理简析DFA在输入一个状态时，只得到一个固定的状态。DFA有">
 <meta property="og:locale" content="mul">
-<meta property="og:image" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/bfa.png">
+<meta property="og:image" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/dfa.png">
 <meta property="og:image" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/nfa.png">
-<meta property="og:updated_time" content="2018-07-25T03:41:02.788Z">
+<meta property="og:updated_time" content="2018-07-25T03:44:00.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则之NFA与DFA">
 <meta name="twitter:description" content="正则表达式作为一种方便的符号匹配规则，实现时必须依赖一套高效的算法，这套算法就被称之为正则表达式引擎。实现正则表达式引擎的方法分为两种：DFA自动机（Deterministic Final Automata | 确定型有穷自动机）和NFA自动机（Nondeterministic Final Auomaton | 不确定型有穷自动机）。 原理简析DFA在输入一个状态时，只得到一个固定的状态。DFA有">
-<meta name="twitter:image" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/bfa.png">
+<meta name="twitter:image" content="http://huangyufeng.com/2018/04/05/正则之NFA与DFA/dfa.png">
 
 
 
@@ -379,7 +379,7 @@
       
         <p>正则表达式作为一种方便的符号匹配规则，实现时必须依赖一套高效的算法，这套算法就被称之为<strong>正则表达式引擎</strong>。实现正则表达式引擎的方法分为两种：<strong>DFA自动机</strong>（Deterministic Final Automata | 确定型有穷自动机）和<strong>NFA自动机</strong>（Nondeterministic Final Auomaton | 不确定型有穷自动机）。</p>
 <h2 id="原理简析"><a href="#原理简析" class="headerlink" title="原理简析"></a>原理简析</h2><h3 id="DFA"><a href="#DFA" class="headerlink" title="DFA"></a>DFA</h3><p>在输入一个状态时，只得到一个固定的状态。DFA有一个有限状态集合和一些从一个状态通向另一个状态的边，每条边上标记有一个符号，其中一个状态是初态，某些状态是终态。但不同于不确定的有限自动机，DFA中不会有从同一状态出发的两条边标志有相同的符号。</p>
-<p><img src="/2018/04/05/正则之NFA与DFA/bfa.png" alt="bfa"></p>
+<p><img src="/2018/04/05/正则之NFA与DFA/dfa.png" alt="dfa"></p>
 <p>简单来说，对于正则匹配，就是待匹配的字符逐个读入，每读入一个字符，即判断它可能的后续匹配情况，进而继续读取下一个字符，在每种可能的基础上继续匹配，抛弃匹配失败的情况，如此进行下去，直至匹配完成。</p>
 <p><strong>举例</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/abc&#123;<span class="number">1</span>, <span class="number">3</span>&#125;d*[db]/g.test(<span class="string">'abccdb'</span>)</span><br></pre></td></tr></table></figure></p>
 <ol>
@@ -449,6 +449,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/18/React之服务端渲染/" rel="prev" title="React之服务端渲染">
+                React之服务端渲染 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -532,7 +536,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -554,7 +558,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -655,7 +659,7 @@
 黔ICP备18006011号-1
 
 <div style="width:300px;margin:0 auto; padding:10px 0;">
-  <img style="display:inline-block" src="images/备案图标.png"/>
+  <img style="display:inline-block" src="/images/备案图标.png"/>
   <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=52011502000379" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">贵公网安备 52011502000379号</p></a>
 </div>
 		 
