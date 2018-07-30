@@ -11,6 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
+<meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline' 'unsafe-eval' 'self' *.sohu.com *.itc.cn *.lncld.net api.leancloud.cn; child-src https:">
 
 
 
@@ -79,18 +80,18 @@
 
 
 
-<meta name="description" content="a personal blog and record of berry">
+<meta name="description" content="REST即表述性状态传递（英文：Representational State Transfer，简称REST）是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。它是一种针对网络应用的设计和开发方式，可以降低开发的复杂性，提高系统的可伸缩性。满足REST条件的架构被认为是RESTful的。 简介资源（Resources）REST是以资源为中心的，在REST中，认为We">
 <meta name="keywords" content="advanced,Restful">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RESTful学习笔记">
 <meta property="og:url" content="http://huangyufeng.com/2018/05/20/RESTful学习笔记/index.html">
 <meta property="og:site_name" content="Berry&#39;s Home">
-<meta property="og:description" content="a personal blog and record of berry">
+<meta property="og:description" content="REST即表述性状态传递（英文：Representational State Transfer，简称REST）是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。它是一种针对网络应用的设计和开发方式，可以降低开发的复杂性，提高系统的可伸缩性。满足REST条件的架构被认为是RESTful的。 简介资源（Resources）REST是以资源为中心的，在REST中，认为We">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-07-25T06:53:59.675Z">
+<meta property="og:updated_time" content="2018-07-30T03:43:31.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RESTful学习笔记">
-<meta name="twitter:description" content="a personal blog and record of berry">
+<meta name="twitter:description" content="REST即表述性状态传递（英文：Representational State Transfer，简称REST）是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。它是一种针对网络应用的设计和开发方式，可以降低开发的复杂性，提高系统的可伸缩性。满足REST条件的架构被认为是RESTful的。 简介资源（Resources）REST是以资源为中心的，在REST中，认为We">
 
 
 
@@ -374,7 +375,20 @@
       
 
       
-        
+        <p><strong>REST</strong>即表述性状态传递（英文：Representational State Transfer，简称REST）是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。它是一种针对网络应用的设计和开发方式，可以降低开发的复杂性，提高系统的可伸缩性。满足<strong>REST</strong>条件的架构被认为是<strong>RESTful</strong>的。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="资源（Resources）"><a href="#资源（Resources）" class="headerlink" title="资源（Resources）"></a>资源（Resources）</h3><p>REST是以资源为中心的，在REST中，认为Web是由一系列的抽象资源（Abstract Resource）组成，这些抽象的资源具有不同的具体表现形式。</p>
+<h3 id="表现层（Representation）"><a href="#表现层（Representation）" class="headerlink" title="表现层（Representation）"></a>表现层（Representation）</h3><p>表现层其实指的是资源的某种表现形式。譬如，定义一个资源为photo表现形式可以用用JSON，XML，JPEG等。</p>
+<h3 id="状态转化（State-Transfer）"><a href="#状态转化（State-Transfer）" class="headerlink" title="状态转化（State Transfer）"></a>状态转化（State Transfer）</h3><p>Rest是无状态的（Stateless），通信的会话状态（Session State）应该全部由客户端负责维护。访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，势必涉及到数据和状态的变化，这种转化是建立在表现层之上的，状态变化，通过HTTP动词实现。</p>
+<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="网络上的所有事物都被抽象为资源（resource）"><a href="#网络上的所有事物都被抽象为资源（resource）" class="headerlink" title="网络上的所有事物都被抽象为资源（resource）"></a>网络上的所有事物都被抽象为资源（resource）</h3><p>无论是图片、视频、HTML、JSON数据…都被视为资源。</p>
+<h3 id="每个资源对应一个唯一的资源标识符（resource-identifier）"><a href="#每个资源对应一个唯一的资源标识符（resource-identifier）" class="headerlink" title="每个资源对应一个唯一的资源标识符（resource identifier）"></a>每个资源对应一个唯一的资源标识符（resource identifier）</h3><p>网络中的各类资源或者一些虚拟服务都将通过<strong>统一资源标识符</strong>（URI）来进行位移的标识。</p>
+<h3 id="通过通用的连接器接口（generic-connector-interface）对资源进行操作"><a href="#通过通用的连接器接口（generic-connector-interface）对资源进行操作" class="headerlink" title="通过通用的连接器接口（generic connector interface）对资源进行操作"></a>通过通用的连接器接口（generic connector interface）对资源进行操作</h3><p>REST是基于Http协议的，任何对资源的操作行为都是通过Http协议来实现。Http把对一个资源的操作限制在4个方法以内：<code>GET</code>, <code>POST</code>, <code>PUT</code>和<code>DELETE</code>。</p>
+<h3 id="对资源的各种操作不会改变资源标识符"><a href="#对资源的各种操作不会改变资源标识符" class="headerlink" title="对资源的各种操作不会改变资源标识符"></a>对资源的各种操作不会改变资源标识符</h3><p>在对资源进行操作时，应当合理使用Http协议中提供的操作，而不应通过资源标识符的方式来提供操作。例如：<code>http://example.com/delete_resourse</code>这样的方式应当改为使用<code>DELETE</code>方法。同时，对于资源类型应当在Http的Header中的<code>Accept</code>与<code>Content-Type</code>中标识，而不应用URI区分。</p>
+<h3 id="所有的操作都是无状态的（stateless）"><a href="#所有的操作都是无状态的（stateless）" class="headerlink" title="所有的操作都是无状态的（stateless）"></a>所有的操作都是无状态的（stateless）</h3><p>REST之所以可以提高系统的<strong>可伸缩性</strong>，就是因为它要求所有的操作都是无状态的。由于没有了上下文(Context)的约束，做分布式和集群的时候就更为简单，也可以让系统更为有效的利用缓冲池(Pool）。并且由于服务器端不需要记录客户端的一系列访问，也提高了服务器端的性能。</p>
+<h2 id="与MVC对比"><a href="#与MVC对比" class="headerlink" title="与MVC对比"></a>与MVC对比</h2><p>直到现在为止，MVC(Model-View-Controller) 模式依然是Web开发最普遍的模式，绝大多数的公司和开发人员都采取此种架构来开发Web应用，并且其思维方式也停留于此。MVC模式由数据，视图和控制 器构成，通过事件(Event)触发Controller来改变Model和View。加上Webwork,Struts等开源框架的加入，MVC开发模 式已经相当成熟，其思想根本就是<strong>基于Action来驱动</strong>。</p>
+<p>REST新的思维方式是把所有用户需求抽象为资源，这在实际开发中是比较难做到的，因为<strong>并不是所有的用户需求都能被抽象为资源</strong>，这样也就是说不是整个系统的结构都能通过REST的来表现。</p>
+<p>因此，我们认为比较好的办法是混用REST和MVC，因为这适合绝 大多数的Web应用开发，开发人员只需要对比较容易能够抽象为资源的用户需求采取REST的开发模式，而对其它需求采取MVC开发即可。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/dongnan591172113/article/details/52087240" target="_blank" rel="noopener">REST框架详解</a><br><a href="https://blog.csdn.net/u013628152/article/details/42709033" target="_blank" rel="noopener">论REST架构与传统MVC</a></p>
+
       
     </div>
     
@@ -475,8 +489,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -560,6 +583,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#资源（Resources）"><span class="nav-number">1.1.</span> <span class="nav-text">资源（Resources）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表现层（Representation）"><span class="nav-number">1.2.</span> <span class="nav-text">表现层（Representation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态转化（State-Transfer）"><span class="nav-number">1.3.</span> <span class="nav-text">状态转化（State Transfer）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则"><span class="nav-number">2.</span> <span class="nav-text">设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络上的所有事物都被抽象为资源（resource）"><span class="nav-number">2.1.</span> <span class="nav-text">网络上的所有事物都被抽象为资源（resource）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#每个资源对应一个唯一的资源标识符（resource-identifier）"><span class="nav-number">2.2.</span> <span class="nav-text">每个资源对应一个唯一的资源标识符（resource identifier）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过通用的连接器接口（generic-connector-interface）对资源进行操作"><span class="nav-number">2.3.</span> <span class="nav-text">通过通用的连接器接口（generic connector interface）对资源进行操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对资源的各种操作不会改变资源标识符"><span class="nav-number">2.4.</span> <span class="nav-text">对资源的各种操作不会改变资源标识符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所有的操作都是无状态的（stateless）"><span class="nav-number">2.5.</span> <span class="nav-text">所有的操作都是无状态的（stateless）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与MVC对比"><span class="nav-number">3.</span> <span class="nav-text">与MVC对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

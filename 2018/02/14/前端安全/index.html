@@ -11,6 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
+<meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline' 'unsafe-eval' 'self' *.sohu.com *.itc.cn *.lncld.net api.leancloud.cn; child-src https:">
 
 
 
@@ -87,7 +88,7 @@
 <meta property="og:site_name" content="Berry&#39;s Home">
 <meta property="og:description" content="XSS定义跨站脚本（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许攻击者将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 攻击形式 非持久型攻击有些网站的网页内容与url参数相关，攻击者找到漏洞地址后，修改其中的url，然后发给别人，诱使别人点击，从而通过执行脚本，获取对方的">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-05-08T11:23:45.936Z">
+<meta property="og:updated_time" content="2018-07-30T06:30:36.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端安全">
 <meta name="twitter:description" content="XSS定义跨站脚本（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许攻击者将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 攻击形式 非持久型攻击有些网站的网页内容与url参数相关，攻击者找到漏洞地址后，修改其中的url，然后发给别人，诱使别人点击，从而通过执行脚本，获取对方的">
@@ -414,7 +415,77 @@
 <li><p>防住第一道防线-XSS<br>防止Cookie通过XSS被恶意窃取，防止攻击者伪装成用户进行正常访问。</p>
 </li>
 </ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000009514661" target="_blank" rel="noopener">《常见网络攻击–XSS &amp;&amp; CSRF》</a></p>
+<h2 id="CSP"><a href="#CSP" class="headerlink" title="CSP"></a>CSP</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p><strong>CSP</strong>指的是内容安全策略。为了缓解很大一部分潜在的跨站脚本问题，浏览器的扩展程序系统引入了内容安全策略（CSP）的一般概念。这将引入一些相当严格的策略，会使扩展程序在默认情况下更加安全，开发者可以创建并强制应用一些规则，管理网站允许加载的内容。CSP实质就是白名单制度，开发者明确告诉客户端，哪些外部资源可以加载和执行，等同于提供白名单。它的实现和执行全部由浏览器完成，开发者只需提供配置。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在浏览网页的过程中，尤其是移动端的网页，经常看到有很多无关的广告，其实大部分广告都是所在的网络劫持了网站响应的内容，并在其中植入了广告代码。为了防止这种情况发生，我们可以使用CSP来快速的阻止这种广告植入。而且可以比较好的防御dom xss。</p>
+<h4 id="使用meta标签"><a href="#使用meta标签" class="headerlink" title="使用meta标签"></a>使用meta标签</h4><p>直接在页面添加meta标签：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;script-src &apos;self&apos;; object-src &apos;none&apos;; style-src cdn.example.org third-party.org; child-src https:&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>CSP内容匹配的规则：</strong>规则名称 规则 规则；规则名称 规则 …</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">规则</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">‘self’</td>
+<td style="text-align:center">当前域名下</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">*.xx.com</td>
+<td style="text-align:center">支持多级域名， 可以不填写http协议</td>
+<td style="text-align:center"><code>*.huangyufeng.com</code></td>
+</tr>
+<tr>
+<td style="text-align:center">default-src</td>
+<td style="text-align:center">所有资源的默认策略，如果声明了其他资源策略，默认策略将被覆盖</td>
+<td style="text-align:center">default-src <code>&#39;self&#39;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">script-src</td>
+<td style="text-align:center">JS等脚本的加载策略</td>
+<td style="text-align:center">script-src <code>*.huangyufeng.com</code></td>
+</tr>
+<tr>
+<td style="text-align:center">style-src</td>
+<td style="text-align:center">样式表加载策略</td>
+<td style="text-align:center">style-src <code>*.huangyufeng.com</code></td>
+</tr>
+<tr>
+<td style="text-align:center">‘unsafe-inline’</td>
+<td style="text-align:center">允许执行内联的JS代码，默认为不允许，如果有内联的代码必须加上这条</td>
+<td style="text-align:center">script-src: <code>&#39;unsafe-inline&#39;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">‘unsafe-eval’</td>
+<td style="text-align:center">允许执行eval</td>
+<td style="text-align:center">script-src: <code>&#39;unsafe-eval&#39;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">xxxx:</td>
+<td style="text-align:center">自定义协议</td>
+<td style="text-align:center">script-src <code>httx:</code></td>
+</tr>
+<tr>
+<td style="text-align:center">upgrade-insecure-requests</td>
+<td style="text-align:center">https协议下自动把http请求转为https</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>这种方式最简单，但是也有些缺陷，每个页面都需要添加，而且不能对限制的域名进行上报。</p>
+</blockquote>
+<h4 id="在服务端配置csp"><a href="#在服务端配置csp" class="headerlink" title="在服务端配置csp"></a>在服务端配置csp</h4><ol>
+<li><p>Apache :<br>Add the following to your httpd.conf in your VirtualHost or in an .htaccess file:<br>Header set Content-Security-Policy “default-src ‘self’;”</p>
+</li>
+<li><p>Nginx :<br>In your server {} block add:<br>add_header Content-Security-Policy “default-src ‘self’;”;</p>
+</li>
+</ol>
+<p>在服务端配置所有的页面都可以不需要改了，而且还支持上报。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000009514661" target="_blank" rel="noopener">《常见网络攻击–XSS &amp;&amp; CSRF》</a><br><a href="https://www.cnblogs.com/lmh2072005/p/6044542.html" target="_blank" rel="noopener">《CSP内容安全策略》</a></p>
 
       
     </div>
@@ -455,8 +526,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/01/Node基础/" rel="prev" title="Node基础">
-                Node基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/01/Node学习笔记/" rel="prev" title="Node学习笔记">
+                Node学习笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -618,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS"><span class="nav-number">1.</span> <span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#攻击形式"><span class="nav-number">1.2.</span> <span class="nav-text">攻击形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#危害"><span class="nav-number">1.3.</span> <span class="nav-text">危害</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预防"><span class="nav-number">1.4.</span> <span class="nav-text">预防</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF"><span class="nav-number">2.</span> <span class="nav-text">CSRF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-1"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#攻击形势"><span class="nav-number">2.2.</span> <span class="nav-text">攻击形势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预防-1"><span class="nav-number">2.3.</span> <span class="nav-text">预防</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS"><span class="nav-number">1.</span> <span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#攻击形式"><span class="nav-number">1.2.</span> <span class="nav-text">攻击形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#危害"><span class="nav-number">1.3.</span> <span class="nav-text">危害</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预防"><span class="nav-number">1.4.</span> <span class="nav-text">预防</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF"><span class="nav-number">2.</span> <span class="nav-text">CSRF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-1"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#攻击形势"><span class="nav-number">2.2.</span> <span class="nav-text">攻击形势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预防-1"><span class="nav-number">2.3.</span> <span class="nav-text">预防</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSP"><span class="nav-number">3.</span> <span class="nav-text">CSP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-2"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">3.2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用meta标签"><span class="nav-number">3.2.1.</span> <span class="nav-text">使用meta标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在服务端配置csp"><span class="nav-number">3.2.2.</span> <span class="nav-text">在服务端配置csp</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
