@@ -80,18 +80,20 @@
 
 
 
-<meta name="description" content="a personal blog and record of berry">
+<meta name="description" content="PWA（Progressive Web App | 渐进式网页应用）由Google推出的一套实现原生App体验的Web技术方案。 特性可靠即时加载，并且在网络不确定的情况下也能正常显示，不会出现无网络、无连接提示的情况（Unable to connect internet）。 快速以流畅的动画快速响应用户，与用户进行流畅的交互。并且不会出现滚动卡顿（Janky Scrolling）。 优质体验使用">
 <meta name="keywords" content="advanced,mobile">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PWA">
 <meta property="og:url" content="http://huangyufeng.com/2018/07/02/PWA/index.html">
 <meta property="og:site_name" content="Berry&#39;s">
-<meta property="og:description" content="a personal blog and record of berry">
+<meta property="og:description" content="PWA（Progressive Web App | 渐进式网页应用）由Google推出的一套实现原生App体验的Web技术方案。 特性可靠即时加载，并且在网络不确定的情况下也能正常显示，不会出现无网络、无连接提示的情况（Unable to connect internet）。 快速以流畅的动画快速响应用户，与用户进行流畅的交互。并且不会出现滚动卡顿（Janky Scrolling）。 优质体验使用">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-07-25T07:01:30.567Z">
+<meta property="og:image" content="http://huangyufeng.com/2018/07/02/PWA/service-worker.png">
+<meta property="og:updated_time" content="2018-08-01T16:14:39.327Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PWA">
-<meta name="twitter:description" content="a personal blog and record of berry">
+<meta name="twitter:description" content="PWA（Progressive Web App | 渐进式网页应用）由Google推出的一套实现原生App体验的Web技术方案。 特性可靠即时加载，并且在网络不确定的情况下也能正常显示，不会出现无网络、无连接提示的情况（Unable to connect internet）。 快速以流畅的动画快速响应用户，与用户进行流畅的交互。并且不会出现滚动卡顿（Janky Scrolling）。 优质体验使用">
+<meta name="twitter:image" content="http://huangyufeng.com/2018/07/02/PWA/service-worker.png">
 
 
 
@@ -375,7 +377,22 @@
       
 
       
-        
+        <p><strong>PWA</strong>（Progressive Web App | 渐进式网页应用）由<strong>Google</strong>推出的一套实现原生App体验的Web技术方案。</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><h3 id="可靠"><a href="#可靠" class="headerlink" title="可靠"></a>可靠</h3><p>即时加载，并且在网络不确定的情况下也能正常显示，不会出现无网络、无连接提示的情况（Unable to connect internet）。</p>
+<h3 id="快速"><a href="#快速" class="headerlink" title="快速"></a>快速</h3><p>以流畅的动画快速响应用户，与用户进行流畅的交互。并且不会出现滚动卡顿（Janky Scrolling）。</p>
+<h3 id="优质体验"><a href="#优质体验" class="headerlink" title="优质体验"></a>优质体验</h3><p>使用体验就像是在设备上安装的本地应用程序一样，为用户带来更好的体验。</p>
+<h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a>Service Worker</h3><p>当用户在设备上发出启动应用的请求时，服务者能使渐进式Web应用快速加载，而不管网络状态如何。这样的特性依赖于<code>Service Worker</code>技术：</p>
+<p><code>Service Worker</code>是Chrome团队提出和力推的一个 WEB API，用于给 web 应用提供高级的可持续的后台处理能力。</p>
+<p><img src="/2018/07/02/PWA/service-worker.png" alt="service worker"></p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p><code>Service Worker</code>就像介于服务器和网页之间的拦截器，能够拦截进出的HTTP 请求，从而完全控制你的网站。其实，它相当于一个离线的<code>Web Worker</code>，一个运行在浏览器端的子线程，用于在请求Web时在浏览器端调用本地缓存资源，也能做到选择从服务器获取的资源进行缓存，因此可以无需关注网络情况。</p>
+<h4 id="缓存策略"><a href="#缓存策略" class="headerlink" title="缓存策略"></a>缓存策略</h4><ol>
+<li>Cache API缓存<br> <code>Service Worker</code>本身通过<a href="https://developer.mozilla.org/en-US/docs/Web/API/cache" target="_blank" rel="noopener">Cache API</a>对HTTP响应的资源进行缓存，例如页面（HTML）；</li>
+<li><p>浏览器其他缓存机制<br> 除了利用<code>Service Worker</code>本身的缓存</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> js =<span class="number">123</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Manifest"><a href="#Manifest" class="headerlink" title="Manifest"></a>Manifest</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developers.google.com/web/progressive-web-apps/" target="_blank" rel="noopener">Progressive Web Apps</a></p>
+
       
     </div>
     
@@ -476,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -561,6 +587,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">1.</span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠"><span class="nav-number">1.1.</span> <span class="nav-text">可靠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速"><span class="nav-number">1.2.</span> <span class="nav-text">快速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优质体验"><span class="nav-number">1.3.</span> <span class="nav-text">优质体验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术"><span class="nav-number">2.</span> <span class="nav-text">技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Service-Worker"><span class="nav-number">2.1.</span> <span class="nav-text">Service Worker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">2.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存策略"><span class="nav-number">2.1.2.</span> <span class="nav-text">缓存策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manifest"><span class="nav-number">2.2.</span> <span class="nav-text">Manifest</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
