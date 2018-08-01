@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="a personal blog and record of berry">
+<meta name="description" content="OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用。 使用目的OAuth主要用于向第三方平台进行授权的相关工作，避免第三方平台为了识别用户权限而存储用户的账户、密码等隐私信息。 OAuth的思路OAuth在”客户端”与”服务提供商”之间，设置了一个授权层（authorization layer）。”客户端”不能直接登录”服务提供商”，只能登录授权层，以此将用">
 <meta name="keywords" content="berry, huang, 黄玉峰, 博客, 日志, 随笔">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oauth学习笔记">
-<meta property="og:url" content="http://huangyufeng.com/2018/07/31/Oauth学习笔记/index.html">
+<meta property="og:url" content="https://huangyufeng.com/2018/07/31/Oauth学习笔记/index.html">
 <meta property="og:site_name" content="Berry&#39;s">
-<meta property="og:description" content="a personal blog and record of berry">
+<meta property="og:description" content="OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用。 使用目的OAuth主要用于向第三方平台进行授权的相关工作，避免第三方平台为了识别用户权限而存储用户的账户、密码等隐私信息。 OAuth的思路OAuth在”客户端”与”服务提供商”之间，设置了一个授权层（authorization layer）。”客户端”不能直接登录”服务提供商”，只能登录授权层，以此将用">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-07-31T06:08:51.056Z">
+<meta property="og:updated_time" content="2018-08-01T17:09:49.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oauth学习笔记">
-<meta name="twitter:description" content="a personal blog and record of berry">
+<meta name="twitter:description" content="OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用。 使用目的OAuth主要用于向第三方平台进行授权的相关工作，避免第三方平台为了识别用户权限而存储用户的账户、密码等隐私信息。 OAuth的思路OAuth在”客户端”与”服务提供商”之间，设置了一个授权层（authorization layer）。”客户端”不能直接登录”服务提供商”，只能登录授权层，以此将用">
 
 
 
@@ -121,7 +121,7 @@
 
 
 
-  <link rel="canonical" href="http://huangyufeng.com/2018/07/31/Oauth学习笔记/"/>
+  <link rel="canonical" href="https://huangyufeng.com/2018/07/31/Oauth学习笔记/"/>
 
 
 
@@ -264,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://huangyufeng.com/2018/07/31/Oauth学习笔记/">
+    <link itemprop="mainEntityOfPage" href="https://huangyufeng.com/2018/07/31/Oauth学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Berry Huang">
@@ -353,7 +353,45 @@
       
 
       
-        
+        <p><strong>OAuth</strong>是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用。</p>
+<h2 id="使用目的"><a href="#使用目的" class="headerlink" title="使用目的"></a>使用目的</h2><p><code>OAuth</code>主要用于向第三方平台进行授权的相关工作，避免第三方平台为了识别用户权限而存储用户的账户、密码等隐私信息。</p>
+<h2 id="OAuth的思路"><a href="#OAuth的思路" class="headerlink" title="OAuth的思路"></a>OAuth的思路</h2><p>OAuth在”客户端”与”服务提供商”之间，设置了一个授权层（authorization layer）。”客户端”不能直接登录”服务提供商”，只能登录授权层，以此将用户与客户端区分开来。”客户端”登录授权层所用的令牌（token），与用户的密码不同。用户可以在登录的时候，指定授权层令牌的权限范围和有效期。</p>
+<p>“客户端”登录授权层以后，”服务提供商”根据令牌的权限范围和有效期，向”客户端”开放用户储存的资料。</p>
+<h2 id="使用流程"><a href="#使用流程" class="headerlink" title="使用流程"></a>使用流程</h2><ol>
+<li>用户打开客户端以后，客户端要求用户给予授权；</li>
+<li>用户同意给予客户端授权；</li>
+<li>客户端使用上一步获得的授权，向认证服务器申请令牌；</li>
+<li>认证服务器对客户端进行认证以后，确认无误，同意发放令牌；</li>
+<li>客户端使用令牌，向资源服务器申请获取资源；</li>
+<li>资源服务器确认令牌无误，同意向客户端开放资源。</li>
+</ol>
+<h2 id="客户端的授权模式"><a href="#客户端的授权模式" class="headerlink" title="客户端的授权模式"></a>客户端的授权模式</h2><h3 id="授权码模式（authorization-code）"><a href="#授权码模式（authorization-code）" class="headerlink" title="授权码模式（authorization code）"></a>授权码模式（authorization code）</h3><ol>
+<li>用户访问客户端，后者将前者导向认证服务器；</li>
+<li>用户选择是否给予客户端授权；</li>
+<li>假设用户给予授权，认证服务器将用户导向客户端事先指定的”重定向URI”（redirection URI），同时附上一个授权码；</li>
+<li>客户端收到授权码，附上早先的”重定向URI”，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见；</li>
+<li>认证服务器核对了授权码和重定向URI，确认无误后，向客户端发送访问令牌（access token）和更新令牌（refresh token）。</li>
+</ol>
+<h3 id="简化模式（implicit）"><a href="#简化模式（implicit）" class="headerlink" title="简化模式（implicit）"></a>简化模式（implicit）</h3><ol>
+<li>客户端将用户导向认证服务器；</li>
+<li>用户决定是否给于客户端授权；</li>
+<li>假设用户给予授权，认证服务器将用户导向客户端指定的”重定向URI”，并在URI的Hash部分包含了访问令牌；</li>
+<li>浏览器向资源服务器发出请求，其中不包括上一步收到的Hash值；</li>
+<li>资源服务器返回一个网页，其中包含的代码可以获取Hash值中的令牌；</li>
+<li>浏览器执行上一步获得的脚本，提取出令牌；</li>
+<li>浏览器将令牌发给客户端。</li>
+</ol>
+<h3 id="密码模式（resource-owner-password-credentials）"><a href="#密码模式（resource-owner-password-credentials）" class="headerlink" title="密码模式（resource owner password credentials）"></a>密码模式（resource owner password credentials）</h3><ol>
+<li>用户向客户端提供用户名和密码；</li>
+<li>客户端将用户名和密码发给认证服务器，向后者请求令牌；</li>
+<li>认证服务器确认无误后，向客户端提供访问令牌。</li>
+</ol>
+<h3 id="客户端模式（client-credentials）"><a href="#客户端模式（client-credentials）" class="headerlink" title="客户端模式（client credentials）"></a>客户端模式（client credentials）</h3><ol>
+<li>客户端向认证服务器进行身份认证，并要求一个访问令牌；</li>
+<li>认证服务器确认无误后，向客户端提供访问令牌。</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">《理解OAuth 2.0》——阮一峰</a></p>
+
       
     </div>
     
@@ -386,6 +424,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/02/JSON-Web-Token/" rel="prev" title="JSON Web Token">
+                JSON Web Token <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -442,8 +484,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -460,7 +511,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -527,6 +578,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用目的"><span class="nav-number">1.</span> <span class="nav-text">使用目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OAuth的思路"><span class="nav-number">2.</span> <span class="nav-text">OAuth的思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用流程"><span class="nav-number">3.</span> <span class="nav-text">使用流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端的授权模式"><span class="nav-number">4.</span> <span class="nav-text">客户端的授权模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#授权码模式（authorization-code）"><span class="nav-number">4.1.</span> <span class="nav-text">授权码模式（authorization code）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简化模式（implicit）"><span class="nav-number">4.2.</span> <span class="nav-text">简化模式（implicit）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#密码模式（resource-owner-password-credentials）"><span class="nav-number">4.3.</span> <span class="nav-text">密码模式（resource owner password credentials）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端模式（client-credentials）"><span class="nav-number">4.4.</span> <span class="nav-text">客户端模式（client credentials）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

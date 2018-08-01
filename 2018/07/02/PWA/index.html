@@ -84,16 +84,16 @@
 <meta name="keywords" content="advanced,mobile">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PWA">
-<meta property="og:url" content="http://huangyufeng.com/2018/07/02/PWA/index.html">
+<meta property="og:url" content="https://huangyufeng.com/2018/07/02/PWA/index.html">
 <meta property="og:site_name" content="Berry&#39;s">
 <meta property="og:description" content="PWA（Progressive Web App | 渐进式网页应用）由Google推出的一套实现原生App体验的Web技术方案。 特性可靠即时加载，并且在网络不确定的情况下也能正常显示，不会出现无网络、无连接提示的情况（Unable to connect internet）。 快速以流畅的动画快速响应用户，与用户进行流畅的交互。并且不会出现滚动卡顿（Janky Scrolling）。 优质体验使用">
 <meta property="og:locale" content="mul">
-<meta property="og:image" content="http://huangyufeng.com/2018/07/02/PWA/service-worker.png">
-<meta property="og:updated_time" content="2018-08-01T16:14:39.327Z">
+<meta property="og:image" content="https://huangyufeng.com/2018/07/02/PWA/service-worker.png">
+<meta property="og:updated_time" content="2018-08-01T16:48:31.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PWA">
 <meta name="twitter:description" content="PWA（Progressive Web App | 渐进式网页应用）由Google推出的一套实现原生App体验的Web技术方案。 特性可靠即时加载，并且在网络不确定的情况下也能正常显示，不会出现无网络、无连接提示的情况（Unable to connect internet）。 快速以流畅的动画快速响应用户，与用户进行流畅的交互。并且不会出现滚动卡顿（Janky Scrolling）。 优质体验使用">
-<meta name="twitter:image" content="http://huangyufeng.com/2018/07/02/PWA/service-worker.png">
+<meta name="twitter:image" content="https://huangyufeng.com/2018/07/02/PWA/service-worker.png">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://huangyufeng.com/2018/07/02/PWA/"/>
+  <link rel="canonical" href="https://huangyufeng.com/2018/07/02/PWA/"/>
 
 
 
@@ -266,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://huangyufeng.com/2018/07/02/PWA/">
+    <link itemprop="mainEntityOfPage" href="https://huangyufeng.com/2018/07/02/PWA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Berry Huang">
@@ -387,11 +387,27 @@
 <h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p><code>Service Worker</code>就像介于服务器和网页之间的拦截器，能够拦截进出的HTTP 请求，从而完全控制你的网站。其实，它相当于一个离线的<code>Web Worker</code>，一个运行在浏览器端的子线程，用于在请求Web时在浏览器端调用本地缓存资源，也能做到选择从服务器获取的资源进行缓存，因此可以无需关注网络情况。</p>
 <h4 id="缓存策略"><a href="#缓存策略" class="headerlink" title="缓存策略"></a>缓存策略</h4><ol>
 <li>Cache API缓存<br> <code>Service Worker</code>本身通过<a href="https://developer.mozilla.org/en-US/docs/Web/API/cache" target="_blank" rel="noopener">Cache API</a>对HTTP响应的资源进行缓存，例如页面（HTML）；</li>
-<li><p>浏览器其他缓存机制<br> 除了利用<code>Service Worker</code>本身的缓存</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> js =<span class="number">123</span></span><br></pre></td></tr></table></figure>
-</li>
+<li>浏览器其他缓存机制<br> 除了利用<code>Service Worker</code>本身的缓存，你还可以利用<code>localstorage</code>，<code>indexeddb</code>来缓存部分资源。</li>
 </ol>
-<h3 id="Manifest"><a href="#Manifest" class="headerlink" title="Manifest"></a>Manifest</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developers.google.com/web/progressive-web-apps/" target="_blank" rel="noopener">Progressive Web Apps</a></p>
+<h4 id="缓存使用"><a href="#缓存使用" class="headerlink" title="缓存使用"></a>缓存使用</h4><ol>
+<li>网络优先<br>即优先获取网络上最新的资源。当网络请求失败的时候，再去获取 service worker 里之前缓存的资源；</li>
+<li>网络条件良好<br>更新<code>cache</code>中对应的缓存资源，保证下次每次加载页面，都是上次访问的最新资源；</li>
+<li>网络异常<br>若找不到<code>service worker</code>中<code>url</code>对应的资源的时候，则去获取<code>service worker</code>对应的<code>/index.html</code>默认首页。</li>
+</ol>
+<blockquote>
+<p>注：初次访问Web应用时并不会立即执行<code>Service Worker</code>，而是待所有资源加载完毕之后再执行。所以第一次加载不可能通过 fetch 事件去缓存页面。</p>
+</blockquote>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ol>
+<li>Download</li>
+<li>Install</li>
+<li>Activate</li>
+</ol>
+<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><p>参考：<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener">Service Worker API</a></p>
+<h3 id="Manifest"><a href="#Manifest" class="headerlink" title="Manifest"></a>Manifest</h3><p><code>manifest</code>的目的是将Web应用程序安装到设备的主屏幕，为用户提供更快的访问和更丰富的体验。通过<code>JSON</code>配置程序图标及应用信息，使之更加贴近真实的本地应用。</p>
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"manifest"</span> <span class="attr">href</span>=<span class="string">"/manifest.json"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">// manifest.json</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"HackerWeb"</span>,</span><br><span class="line">  <span class="attr">"short_name"</span>: <span class="string">"HackerWeb"</span>,</span><br><span class="line">  <span class="attr">"start_url"</span>: <span class="string">"."</span>,</span><br><span class="line">  <span class="attr">"display"</span>: <span class="string">"standalone"</span>,</span><br><span class="line">  <span class="attr">"background_color"</span>: <span class="string">"#fff"</span>,</span><br><span class="line">  <span class="attr">"description"</span>: <span class="string">"A simply readable Hacker News app."</span>,</span><br><span class="line">  <span class="attr">"icons"</span>: [&#123;</span><br><span class="line">    <span class="attr">"src"</span>: <span class="string">"images/touch/homescreen48.png"</span>,</span><br><span class="line">    <span class="attr">"sizes"</span>: <span class="string">"48x48"</span>,</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"image/png"</span></span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    <span class="attr">"src"</span>: <span class="string">"images/touch/homescreen72.png"</span>,</span><br><span class="line">    <span class="attr">"sizes"</span>: <span class="string">"72x72"</span>,</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"image/png"</span></span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    <span class="attr">"src"</span>: <span class="string">"images/touch/homescreen96.png"</span>,</span><br><span class="line">    <span class="attr">"sizes"</span>: <span class="string">"96x96"</span>,</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"image/png"</span></span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    <span class="attr">"src"</span>: <span class="string">"images/touch/homescreen144.png"</span>,</span><br><span class="line">    <span class="attr">"sizes"</span>: <span class="string">"144x144"</span>,</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"image/png"</span></span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    <span class="attr">"src"</span>: <span class="string">"images/touch/homescreen168.png"</span>,</span><br><span class="line">    <span class="attr">"sizes"</span>: <span class="string">"168x168"</span>,</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"image/png"</span></span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    <span class="attr">"src"</span>: <span class="string">"images/touch/homescreen192.png"</span>,</span><br><span class="line">    <span class="attr">"sizes"</span>: <span class="string">"192x192"</span>,</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"image/png"</span></span><br><span class="line">  &#125;],</span><br><span class="line">  <span class="attr">"related_applications"</span>: [&#123;</span><br><span class="line">    <span class="attr">"platform"</span>: <span class="string">"web"</span></span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    <span class="attr">"platform"</span>: <span class="string">"play"</span>,</span><br><span class="line">    <span class="attr">"url"</span>: <span class="string">"https://play.google.com/store/apps/details?id=cheeaun.hackerweb"</span></span><br><span class="line">  &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h2><p>目前PWA的技术尚不成熟，虽然IOS也加入实现的行列，但不可否认，尚有很多平台没有实现相关支持。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developers.google.com/web/progressive-web-apps/" target="_blank" rel="noopener">Progressive Web Apps</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener">Service Worker API</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/Manifest" target="_blank" rel="noopener">Web App Manifest</a></p>
 
       
     </div>
@@ -520,7 +536,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -597,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">1.</span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠"><span class="nav-number">1.1.</span> <span class="nav-text">可靠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速"><span class="nav-number">1.2.</span> <span class="nav-text">快速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优质体验"><span class="nav-number">1.3.</span> <span class="nav-text">优质体验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术"><span class="nav-number">2.</span> <span class="nav-text">技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Service-Worker"><span class="nav-number">2.1.</span> <span class="nav-text">Service Worker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">2.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存策略"><span class="nav-number">2.1.2.</span> <span class="nav-text">缓存策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manifest"><span class="nav-number">2.2.</span> <span class="nav-text">Manifest</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">1.</span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠"><span class="nav-number">1.1.</span> <span class="nav-text">可靠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速"><span class="nav-number">1.2.</span> <span class="nav-text">快速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优质体验"><span class="nav-number">1.3.</span> <span class="nav-text">优质体验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术"><span class="nav-number">2.</span> <span class="nav-text">技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Service-Worker"><span class="nav-number">2.1.</span> <span class="nav-text">Service Worker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">2.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存策略"><span class="nav-number">2.1.2.</span> <span class="nav-text">缓存策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存使用"><span class="nav-number">2.1.3.</span> <span class="nav-text">缓存使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生命周期"><span class="nav-number">2.1.4.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#API"><span class="nav-number">2.1.5.</span> <span class="nav-text">API</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manifest"><span class="nav-number">2.2.</span> <span class="nav-text">Manifest</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#部署"><span class="nav-number">2.2.1.</span> <span class="nav-text">部署</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺陷"><span class="nav-number">3.</span> <span class="nav-text">缺陷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
