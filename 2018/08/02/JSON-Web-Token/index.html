@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="server,network," />
 
 
 
@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="a personal blog and record of berry">
-<meta name="keywords" content="berry, huang, 黄玉峰, 博客, 日志, 随笔">
+<meta name="description" content="在用Nginx做负载均衡时不得不考虑到一个问题——sessionid共享。如果通过IP绑定来防止sessionid共享则容易破坏服务器集群负载均衡的稳定性。但通过redis等技术（数据持久化方案）又无法避免整个服务器集群之间共享sessionid。为了解决这个问题，JSON Web Token诞生了。 定义JSON Web Token（缩写 JWT）是目前最流行的跨域认证解决方案。它不再依赖服务端">
+<meta name="keywords" content="server,network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSON Web Token">
 <meta property="og:url" content="https://huangyufeng.com/2018/08/02/JSON-Web-Token/index.html">
 <meta property="og:site_name" content="Berry&#39;s">
-<meta property="og:description" content="a personal blog and record of berry">
+<meta property="og:description" content="在用Nginx做负载均衡时不得不考虑到一个问题——sessionid共享。如果通过IP绑定来防止sessionid共享则容易破坏服务器集群负载均衡的稳定性。但通过redis等技术（数据持久化方案）又无法避免整个服务器集群之间共享sessionid。为了解决这个问题，JSON Web Token诞生了。 定义JSON Web Token（缩写 JWT）是目前最流行的跨域认证解决方案。它不再依赖服务端">
 <meta property="og:locale" content="mul">
-<meta property="og:updated_time" content="2018-08-01T16:54:46.911Z">
+<meta property="og:updated_time" content="2018-08-02T02:48:55.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSON Web Token">
-<meta name="twitter:description" content="a personal blog and record of berry">
+<meta name="twitter:description" content="在用Nginx做负载均衡时不得不考虑到一个问题——sessionid共享。如果通过IP绑定来防止sessionid共享则容易破坏服务器集群负载均衡的稳定性。但通过redis等技术（数据持久化方案）又无法避免整个服务器集群之间共享sessionid。为了解决这个问题，JSON Web Token诞生了。 定义JSON Web Token（缩写 JWT）是目前最流行的跨域认证解决方案。它不再依赖服务端">
 
 
 
@@ -304,6 +304,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index">
+                    <span itemprop="name">note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -353,7 +375,69 @@
       
 
       
-        
+        <p>在用<strong>Nginx</strong>做负载均衡时不得不考虑到一个问题——<code>sessionid</code>共享。如果通过<code>IP</code>绑定来防止<code>sessionid</code>共享则容易破坏服务器集群负载均衡的稳定性。但通过<code>redis</code>等技术（数据持久化方案）又无法避免整个服务器集群之间共享<code>sessionid</code>。为了解决这个问题，<strong>JSON Web Token</strong>诞生了。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>JSON Web Token</strong>（缩写 JWT）是目前最流行的跨域认证解决方案。它不再依赖服务端保存认证信息（session），而是将所有用户的认证信息交由客户端（浏览器等）保管，每次用户请求必须携带这些信息，服务器通过分析这些信息来验证用户。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><strong>JWT</strong>的原理是，服务器认证以后，生成一个由 <code>JSON</code> 字符串（Base64URL转码）或普通字符串拼接而成的大字符串，让用户保存。<code>JSON</code>的内容可能如下：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="number">123</span>,</span><br><span class="line">    <span class="attr">"token"</span>: <span class="string">"fadfdgdsag"</span>,</span><br><span class="line">    <span class="attr">"maxAge"</span>: <span class="number">30</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p><strong>JWT</strong>的认证数据是由三个部分组成的：</p>
+<ol>
+<li>Header（头部）</li>
+<li>Payload（负载）</li>
+<li>Signature（签名）</li>
+</ol>
+<p>这三个部分由<code>.</code>标识符分隔组成一个字符串：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"abadfdsafdsaf.afdsafdsafsadfdsagfg.afdsafdsafasf"</span></span><br><span class="line"><span class="comment">// Header.Playload.Signature</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h3><p><strong>Header</strong>部分是一个<code>JSON</code>对象，描述 JWT 的元数据，通常是下面的样子：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"alg"</span>: <span class="string">"HS256"</span>,</span><br><span class="line">  <span class="attr">"typ"</span>: <span class="string">"JWT"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，<code>alg</code>属性表示签名的算法（algorithm），默认是 <code>HMAC SHA256</code>（写成 HS256）；<code>typ</code>属性表示这个令牌（token）的类型（type），<code>JWT</code> 令牌统一写为<code>JWT</code>。</p>
+<p>最后，将上面的 <code>JSON</code> 对象使用 <code>Base64URL</code> 算法转成字符串。</p>
+<h3 id="Payload"><a href="#Payload" class="headerlink" title="Payload"></a>Payload</h3><p><strong>Payload</strong>部分也是一个 <code>JSON</code> 对象，用来存放实际需要传递的数据。<code>JWT</code> 规定了7个官方字段，供选用:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">iss (issuer)</td>
+<td style="text-align:center">签发人</td>
+</tr>
+<tr>
+<td style="text-align:center">exp (expiration time)</td>
+<td style="text-align:center">过期时间</td>
+</tr>
+<tr>
+<td style="text-align:center">sub (subject)</td>
+<td style="text-align:center">主题</td>
+</tr>
+<tr>
+<td style="text-align:center">aud (audience)</td>
+<td style="text-align:center">受众</td>
+</tr>
+<tr>
+<td style="text-align:center">nbf (Not Before)</td>
+<td style="text-align:center">生效时间</td>
+</tr>
+<tr>
+<td style="text-align:center">iat (Issued At)</td>
+<td style="text-align:center">签发时间</td>
+</tr>
+<tr>
+<td style="text-align:center">jti (JWT ID)</td>
+<td style="text-align:center">编号</td>
+</tr>
+</tbody>
+</table>
+<p>当然，你也可以在其中加入一些自定义的私有字段。最后，将上面的 <code>JSON</code> 对象使用 <code>Base64URL</code> 算法转成字符串。</p>
+<h3 id="Signature"><a href="#Signature" class="headerlink" title="Signature"></a>Signature</h3><p><strong>Signature</strong>不同于上面两个字段，它是用以防止数据篡改的标识，通过复杂的算法（在<strong>Header</strong>中指定的<strong>alg</strong>）把编码后的前两个字段加上服务器端生成的<strong>密钥</strong>合成一个难以伪造的标签：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HMACSHA256(base64UrlEncode(header) + <span class="string">"."</span> + base64UrlEncode(payload), secret);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>Base64URL</code>类似于<code>Base64</code>编码，但它新添了转义<code>URL</code>中特定标识的功能：如<code>=</code>被忽略，<code>+</code>转义成<code>-</code>，<code>/</code>转义成<code>_</code>。</p>
+</blockquote>
+<h2 id="JWT存储"><a href="#JWT存储" class="headerlink" title="JWT存储"></a>JWT存储</h2><p><strong>JWT</strong>最好避免使用<code>cookie</code>存储，这样不利于跨域，同时也无法避免<code>cookie</code>禁用的情况。可以通过<code>localStorage</code>存储。</p>
+<h2 id="JWT发送"><a href="#JWT发送" class="headerlink" title="JWT发送"></a>JWT发送</h2><p><strong>JWT</strong>默认是不加密的（上述加密过程安全性仍然不高，虽然可以二次加密），所以应通过<code>https</code>服务来进行发送。此外，应该将<strong>JWT</strong>存储在<code>http</code>中的<code>Authorization</code>，或者放在<code>post</code>的请求体中。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Authorization</span>: Bearer &lt;token&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h2><p>不同于<strong>session</strong>，面对<strong>JWT</strong>时，服务器是无状态的。因此，只要在<strong>JWT</strong>有效期内，服务器是没有办法让<strong>JWT</strong>失效的。因此，不应将其有效时间设置过长。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html" target="_blank" rel="noopener">《JSON Web Token 入门教程》——阮一峰</a></p>
+
       
     </div>
     
@@ -367,6 +451,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/server/" rel="tag"># server</a>
+          
+            <a href="/tags/network/" rel="tag"># network</a>
+          
+        </div>
       
 
       
@@ -442,8 +534,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -527,6 +628,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">3.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Header"><span class="nav-number">3.1.</span> <span class="nav-text">Header</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Payload"><span class="nav-number">3.2.</span> <span class="nav-text">Payload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Signature"><span class="nav-number">3.3.</span> <span class="nav-text">Signature</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JWT存储"><span class="nav-number">4.</span> <span class="nav-text">JWT存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JWT发送"><span class="nav-number">5.</span> <span class="nav-text">JWT发送</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺陷"><span class="nav-number">6.</span> <span class="nav-text">缺陷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
