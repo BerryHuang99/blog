@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="js,basis," />
+  <meta name="keywords" content="basis,js," />
 
 
 
@@ -81,15 +81,15 @@
 
 
 <meta name="description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以需要进行充分的单元测试。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存">
-<meta name="keywords" content="js,basis">
+<meta name="keywords" content="basis,js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript基础（一）">
 <meta property="og:url" content="https://huangyufeng.com/2017/11/13/JavaScript基础（一）/index.html">
-<meta property="og:site_name" content="Berry&#39;s">
+<meta property="og:site_name" content="Ewan&#39;s">
 <meta property="og:description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以需要进行充分的单元测试。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存">
 <meta property="og:locale" content="mul">
 <meta property="og:image" content="https://huangyufeng.com/2017/11/13/JavaScript基础（一）/storage.png">
-<meta property="og:updated_time" content="2018-08-15T08:38:45.837Z">
+<meta property="og:updated_time" content="2019-06-18T05:52:30.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript基础（一）">
 <meta name="twitter:description" content="基础特点 弱类型 解释型  JS不同于JAVA、C等编译型语言，它仅在运行时执行，不需要提前进行编译。因此，其对平台的依赖性较低，但执行效率却不及编译型语言。此外，对于一部分逻辑和空指针BUG，JS只能在执行时才能发现，而编译型语言在编译过程中就能及时发现，所以需要进行充分的单元测试。 单线程  不同于JAVA等后端语言，JS在浏览器执行时只有单线程执行，不具备多线程功能，因此也不必考虑多线程中存">
@@ -129,7 +129,7 @@
 
 
 
-  <title>JavaScript基础（一） | Berry's</title>
+  <title>JavaScript基础（一） | Ewan's</title>
   
 
 
@@ -159,12 +159,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Berry's</span>
+        <span class="site-title">Ewan's</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">Welcome to Berry's Website</h1>
+        <h1 class="site-subtitle" itemprop="description">Welcome to Ewan's Website</h1>
       
   </div>
 
@@ -269,13 +269,13 @@
     <link itemprop="mainEntityOfPage" href="https://huangyufeng.com/2017/11/13/JavaScript基础（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Berry Huang">
+      <meta itemprop="name" content="Ewan Huang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Berry's">
+      <meta itemprop="name" content="Ewan's">
     </span>
 
     
@@ -465,20 +465,20 @@
 <li><p>Object类型的作用类似于JS中大多数类型的顶级祖先，大多数类的实现都源于对Object的继承。<br>创建Object 实例的方式有两种：</p>
 <ol>
 <li><p>使用new 操作符后跟Object 构造函数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person.name = <span class="string">'berry'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person.name = <span class="string">'Ewan'</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用字面量表示法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    name : <span class="string">'berry'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    name : <span class="string">'Ewan'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
 <li><p>获取对象属性的两种方法：</p>
 <ol>
 <li><p>点操作符：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person.name <span class="comment">// berry</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person.name <span class="comment">// Ewan</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>方括号语法(要访问的属性应以<strong>字符串</strong>的形式出现在方括号中)：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person[<span class="string">'name'</span>]  <span class="comment">// berry</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person[<span class="string">'name'</span>]  <span class="comment">// Ewan</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
@@ -586,7 +586,7 @@
 <li>指向调用者</li>
 <li>对于构造函数，如果function返回的是一个对象，则this指向指向返回的对象，否则指向构造函数生成的对象。</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'berry'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> fn();</span><br><span class="line">alert(f.name);  <span class="comment">// 'berry'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'berry'</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f2 = <span class="keyword">new</span> fn2();</span><br><span class="line">alert(f2.name); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'Ewan'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> fn();</span><br><span class="line">alert(f.name);  <span class="comment">// 'Ewan'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'Ewan'</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f2 = <span class="keyword">new</span> fn2();</span><br><span class="line">alert(f2.name); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 <h3 id="模仿块级作用域"><a href="#模仿块级作用域" class="headerlink" title="模仿块级作用域"></a>模仿块级作用域</h3><p>利用立即执行函数，函数执行完之后随机销毁，因此就形成块级作用域的效果：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 块级作用域</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
 <h3 id="定义私有变量"><a href="#定义私有变量" class="headerlink" title="定义私有变量"></a>定义私有变量</h3><p>利用闭包：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createAccessor</span>(<span class="params">obj, propName, value</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> accessor = &#123;</span><br><span class="line">		get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> value</span><br><span class="line">		&#125;,</span><br><span class="line">		set: <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">			value = v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">Object</span>.defineProperty(obj, propName, &#123;</span><br><span class="line">		get: accessor.get</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">return</span> accessor</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
@@ -612,9 +612,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"># js</a>
-          
             <a href="/tags/basis/" rel="tag"># basis</a>
+          
+            <a href="/tags/js/" rel="tag"># js</a>
           
         </div>
       
@@ -710,7 +710,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">Berry Huang</p>
+              <p class="site-author-name" itemprop="name">Ewan Huang</p>
               <p class="site-description motion-element" itemprop="description">
                 a web developer &amp; lover of life
               </p>
@@ -745,7 +745,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -759,13 +759,13 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/berryhuang99" target="_blank" title="GitHub">
+                    <a href="https://github.com/Ewanhuang99" target="_blank" title="GitHub">
                       
                         <i class="fa fa-fw fa-github"></i></a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:berryhuang99@gmail.com" target="_blank" title="E-Mail">
+                    <a href="mailto:Ewanhuang99@gmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i></a>
                   </span>
@@ -820,11 +820,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Berry Huang</span>
+  <span class="author" itemprop="copyrightHolder">Ewan Huang</span>
 
   
 </div>

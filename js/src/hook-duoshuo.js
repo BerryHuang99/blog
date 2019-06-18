@@ -94,7 +94,7 @@ function getAgentInfo(string) {
       'wap', 'netfront', 'x11', 'java', 'opera mobi',
       'opera mini', 'ucweb', 'windows ce', 'symbian',
       'symbianos', 'series', 'webos', 'sony',
-      'blackberry', 'dopod', 'nokia', 'samsung',
+      'blackEwan', 'dopod', 'nokia', 'samsung',
       'palmsource', 'xda', 'pieplus', 'meizu',
       'midp' ,'cldc' , 'motorola', 'foma',
       'docomo', 'up.browser', 'up.link', 'blazer',
